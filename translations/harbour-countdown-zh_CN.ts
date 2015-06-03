@@ -72,73 +72,38 @@
     </message>
 </context>
 <context>
-    <name>CreateDialog</name>
+    <name>EditDialog</name>
     <message>
         <source>Edit</source>
-        <translation type="unfinished">编辑</translation>
+        <translation>编辑纪念日</translation>
     </message>
     <message>
         <source>Create New</source>
-        <translation type="unfinished">创建纪念日</translation>
+        <translation>创建纪念日</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="unfinished">创建</translation>
+        <translation>创建</translation>
     </message>
     <message>
         <source>Enter a new title</source>
-        <translation type="unfinished">纪念日名称</translation>
+        <translation>纪念日名称</translation>
     </message>
     <message>
-        <source>title</source>
-        <translation type="unfinished">纪念日名称</translation>
+        <source>Title</source>
+        <translation>纪念日名称</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished">日期</translation>
+        <translation>日期</translation>
     </message>
     <message>
         <source>Select</source>
-        <translation type="unfinished">未选择</translation>
-    </message>
-</context>
-<context>
-    <name>CreateNew</name>
-    <message>
-        <source>Date</source>
-        <translation type="vanished">日期</translation>
-    </message>
-    <message>
-        <source>Select</source>
-        <translation type="vanished">未选择</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation type="vanished">编辑</translation>
-    </message>
-    <message>
-        <source>Create New</source>
-        <translation type="vanished">创建纪念日</translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation type="vanished">保存</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">创建</translation>
-    </message>
-    <message>
-        <source>Enter a new title</source>
-        <translation type="vanished">纪念日名称</translation>
-    </message>
-    <message>
-        <source>title</source>
-        <translation type="vanished">纪念日名称</translation>
+        <translation>未选择</translation>
     </message>
 </context>
 <context>
@@ -190,6 +155,10 @@
     <message>
         <source>No items</source>
         <translation>暂无纪念日</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>编辑</translation>
     </message>
 </context>
 </TS>

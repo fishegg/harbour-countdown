@@ -35,8 +35,10 @@ import "pages/storage.js" as ST
 
 ApplicationWindow
 {
+    id: mainapp
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    property bool coverAdd: false
 }
 
 

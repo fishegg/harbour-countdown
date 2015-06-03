@@ -9,6 +9,11 @@ Dialog {
     property string existedTitle
     property string newTitle
     property int dayid: new Date() / 10000
+    property int existedDayid
+    property int existedYear
+    property int existedMonth
+    property int existedDay
+    property string existedDatetext
 
     Column {
         anchors.fill: parent
@@ -21,11 +26,11 @@ Dialog {
             width: parent.width
             focus: dateButton.year === 0 ? true : false
             placeholderText: qsTr("Enter a new title")
-            label: qsTr("title")
+            label: qsTr("Title")
             text: existedTitle ? existedTitle : ""
             EnterKey.enabled: text.length > 0
-            EnterKey.text: dateButton.year === 0 ? qsTr("Date") : qsTr("Create")
-            EnterKey.onClicked: dateButton.year === 0 ? dateButton.openDateDialog() : accept()
+            EnterKey.text: dateButton.year === 0 && existedYear === 0 ? qsTr("Date") : (existedYear === 0 ? qsTr("Create") : qsTr("Save"))
+            EnterKey.onClicked: dateButton.year === 0 && existedYear === 0 ? dateButton.openDateDialog() : accept()
         }
         ValueButton {
             id: dateButton
@@ -33,6 +38,7 @@ Dialog {
             property int year
             property int month
             property int day
+            property string datetext
 
             function openDateDialog() {
                 var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
@@ -46,22 +52,31 @@ Dialog {
                     year = dialog.year
                     month = dialog.month
                     day = dialog.day
+                    datetext = dialog.dateText
                 })
             }
 
             label: qsTr("Date")
-            value: qsTr("Select")
+            value: existedDatetext ? existedDatetext : qsTr("Select")
             width: parent.width
             onClicked: openDateDialog()
         }
 
     }
 
-    canAccept: input.text.length > 0 && dateButton.year !== 0 ? true : false
+    canAccept: input.text.length > 0 && (existedYear !== 0 || dateButton.year !== 0) ? true : false
 
     onAccepted: {
         newTitle = input.text
-        ST.createDays(dayid,newTitle,dateButton.year,dateButton.month,dateButton.day)
-        console.log(dateButton.year + dateButton.month + dateButton.day)
+        if(existedTitle) {
+            if(dateButton.year === 0) {
+                ST.editDays(existedDayid,newTitle,existedYear,existedMonth,existedDay,existedDatetext)
+            }else {
+                ST.editDays(existedDayid,newTitle,dateButton.year,dateButton.month,dateButton.day,dateButton.datetext)
+            }
+        }else{
+            ST.createDays(dayid,newTitle,dateButton.datetext,dateButton.year,dateButton.month,dateButton.day)
+        }
+        console.log(dateButton.year)
     }
 }

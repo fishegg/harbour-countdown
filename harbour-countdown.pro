@@ -27,9 +27,8 @@ OTHER_FILES += qml/harbour-countdown.qml \
     qml/pages/calc.js \
     translations/harbour-countdown-zh_CN.ts \
     qml/pages/AboutPage.qml \
-    qml/pages/refreshinterval.js \
     rpm/harbour-countdown.changes \
-    qml/pages/CreateDialog.qml
+    qml/pages/EditDialog.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

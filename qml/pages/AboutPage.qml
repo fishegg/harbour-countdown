@@ -83,7 +83,7 @@ Page {
                     left: parent.left
                     leftMargin: Theme.paddingMedium
                 }
-                text: "0.1-5"
+                text: "1.0-1"
             }
             SectionHeader {
                 text: qsTr("Known Issues")

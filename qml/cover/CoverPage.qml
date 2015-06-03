@@ -32,7 +32,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages/storage.js" as ST
 import "../pages/calc.js" as CALC
-import "../pages/refreshinterval.js" as RE
 import "../pages"
 
 CoverBackground {
@@ -49,29 +48,33 @@ CoverBackground {
     Timer {
         id: refreshdelay
         interval: 3000
-        onTriggered: ST.getDays("all")
+        onTriggered: updateDaysbetween()
     }
 
     Timer {
         id: refreshTimer
-        property int firstinterval: RE.nextZeroPoint()
-        interval: firstinterval
         onTriggered: {
-            ST.getDays("all")
+            updateDaysbetween()
         }
     }
 
-    Component.onCompleted: {
+    function updateDaysbetween() {
         ST.getDays("all")
+        refreshTimer.interval = CALC.nextZeroPoint()
         refreshTimer.start()
-        refreshTimer.start()
+    }
+
+    Component.onCompleted: {
+        updateDaysbetween()
     }
 
     onStatusChanged: {
         if( status === Cover.Activating ) {
-            ST.getDays("all")
             refreshdelay.start()
-            refreshTimer.restart()
+            console.log("start and interval="+refreshTimer.interval)
+        }else if( status === Cover.Deactivating ) {
+            refreshTimer.stop()
+            console.log("stop")
         }
     }
 
@@ -118,8 +121,9 @@ CoverBackground {
                 id: label3
                 text: name
                 font.pixelSize: Theme.fontSizeSmall
+                horizontalAlignment: Text.AlignRight
                 truncationMode: TruncationMode.Fade
-                width: parent.width - label1.width - 2 * Theme.paddingMedium
+                width: cover.width - label1.width - 2 * Theme.paddingMedium - Theme.paddingSmall / 2
                 anchors {
                     left: label1.right
                     leftMargin: Theme.paddingSmall / 2
@@ -138,14 +142,20 @@ CoverBackground {
         enabled: listModel.count > 4
     }
 
-/*    CoverActionList {
+    FirstPage {id: firstpage}
+
+    CoverActionList {
         id: coverAction
 
         CoverAction {
             iconSource: "image://theme/icon-cover-new"
-            onTriggered: createNew()
+            onTriggered: {
+                mainapp.activate()
+                firstpage.createNew()
+                coverAdd = true
+            }
         }
-    }*/
+    }
 }
 
 

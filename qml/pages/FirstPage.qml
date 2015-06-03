@@ -32,23 +32,40 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "storage.js" as ST
 import "calc.js" as CALC
-import "refreshinterval.js" as RE
 
 
 Page {
     id: page
 
-/*    onStatusChanged: {
-        if(status === PageStatus.Active) {
-            ST.getDays("all")
-        }else{}
-    }*/
+    onStatusChanged: {
+        if(status === PageStatus.Activating) {
+            if(coverAdd) {
+                ST.getDays("all")
+                coverAdd = false
+            }
+        }
+    }
 
     function createNew() {
-        var createdialog = pageStack.push(Qt.resolvedUrl("CreateDialog.qml"))
+        var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"))
         createdialog.accepted.connect(function() {
             ST.getDays("all")
-            //listModel.append(index)
+            console.log("getDays")
+        })
+    }
+
+    function editItem(dayid,name,year,month,day,datetext) {
+        var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"),
+                                          {
+                                              existedDayid: dayid,
+                                              existedYear: year,
+                                              existedMonth: month,
+                                              existedDay: day,
+                                              existedTitle: name,
+                                              existedDatetext: datetext
+                                          })
+        createdialog.accepted.connect(function() {
+            ST.getDays("all")
         })
     }
 
@@ -79,7 +96,7 @@ Page {
             ST.initialize()
             ST.getDays("all")
 //            refreshTimer.start()
-//            console.log(RE.nextZeroPoint())
+//            console.log(CALC.nextZeroPoint())
         }
 
 
@@ -185,6 +202,10 @@ Page {
                 id: contextMenuComponent
                 ContextMenu {
                     id: itemmenu
+                    MenuItem {
+                        text: qsTr("Edit")
+                        onClicked: editItem(dayid,name,year,month,day,datetext)
+                    }
                     MenuItem {
                         text: qsTr("Delete")
                         onClicked: remove(dayid)

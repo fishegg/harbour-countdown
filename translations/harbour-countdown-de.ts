@@ -76,77 +76,38 @@
     </message>
 </context>
 <context>
-    <name>CreateDialog</name>
+    <name>EditDialog</name>
     <message>
         <source>Edit</source>
-        <translation type="unfinished">Bearbeiten</translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <source>Create New</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation type="unfinished">Speichern</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="unfinished">Erstellen</translation>
-    </message>
-    <message>
-        <source>Enter a new title</source>
-        <translation type="unfinished">Neuen Titel eingeben</translation>
-    </message>
-    <message>
-        <source>title</source>
-        <translation type="unfinished">Titel</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="unfinished">Tage</translation>
-    </message>
-    <message>
-        <source>Select</source>
-        <translation type="unfinished">Auswählen</translation>
-    </message>
-</context>
-<context>
-    <name>CreateNew</name>
-    <message>
-        <source></source>
         <translation></translation>
     </message>
     <message>
-        <source>Date</source>
-        <translation type="vanished">Tage</translation>
-    </message>
-    <message>
-        <source>Select</source>
-        <translation type="vanished">Auswählen</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation type="vanished">Bearbeiten</translation>
-    </message>
-    <message>
-        <source>Create New</source>
-        <translation type="vanished">Auswählen</translation>
-    </message>
-    <message>
         <source>Save</source>
-        <translation type="vanished">Speichern</translation>
+        <translation>Speichern</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">Erstellen</translation>
+        <translation>Erstellen</translation>
     </message>
     <message>
         <source>Enter a new title</source>
-        <translation type="vanished">Neuen Titel eingeben</translation>
+        <translation>Neuen Titel eingeben</translation>
     </message>
     <message>
-        <source>title</source>
-        <translation type="vanished">Titel</translation>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Tage</translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation>Auswählen</translation>
     </message>
 </context>
 <context>
@@ -210,6 +171,10 @@
     <message>
         <source>No items</source>
         <translation>Keine Countdowns</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
     </message>
 </context>
 <context>

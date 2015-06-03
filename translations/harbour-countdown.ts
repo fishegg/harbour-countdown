@@ -68,7 +68,14 @@
     </message>
 </context>
 <context>
-    <name>CreateDialog</name>
+    <name>CreateNew</name>
+    <message>
+        <source></source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>EditDialog</name>
     <message>
         <source>Edit</source>
         <translation type="unfinished"></translation>
@@ -90,10 +97,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -101,12 +104,9 @@
         <source>Select</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>CreateNew</name>
     <message>
-        <source></source>
-        <translation></translation>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -157,6 +157,10 @@
     </message>
     <message>
         <source>No items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
