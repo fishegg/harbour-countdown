@@ -10,7 +10,7 @@ function initialize() {
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS day(dayid INTEGER, name TEXT, datetext TEXT, year INTEGER, month INTEGER, day INTEGER);');
                 });
-    if(checkIfColumnExists("datetext" === "false")) {
+    if(checkIfColumnExists("datetext") === "false") {
         updateTable();
     }
 }
