@@ -39,6 +39,8 @@ ApplicationWindow
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     property bool coverAdd: false
+    property bool itemAdded: false
+    property bool itemDeleted: false
 }
 
 

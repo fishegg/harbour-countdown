@@ -48,10 +48,12 @@ Page {
 
     function createNew() {
         var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"))
-        createdialog.accepted.connect(function() {
-            ST.getDays("all")
-            console.log("getDays")
-        })
+        if(!coverAdd) {
+            createdialog.accepted.connect(function() {
+                ST.getDays("all")
+                console.log("getDays")
+            })
+        }
     }
 
     function editItem(dayid,name,year,month,day,datetext) {
@@ -69,8 +71,11 @@ Page {
         })
     }
 
+    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
+
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaListView {
+        id: listview
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
@@ -136,7 +141,7 @@ Page {
             function remove(dayid) {
                 remorseAction ( qsTr( "Deleting" ) , function() {
                     listModel.remove(index);
-                    ST.deleteDays(dayid)
+                    ST.deleteDays(dayid);
                 } , 3000 )
             }
 
@@ -153,6 +158,7 @@ Page {
             }
 
             Rectangle {
+                z: -1
                 height: parent.height
                 width: parent.width
                 opacity: index%2 === 0 ? 0.08 : 0
@@ -187,7 +193,7 @@ Page {
                 anchors.bottom: text3.bottom
                 text: daysbetween > 1 ? daysbetween : (daysbetween === 0 ? qsTr("today") : (daysbetween ===1 ? qsTr("tmr") : -daysbetween) )
                 font.pixelSize: daysbetween < 0 || daysbetween > 1 ? Theme.fontSizeHuge * 1.5 : Theme.fontSizeHuge
-                color: Theme.highlightColor
+                color: daysbetween >=0 ? Theme.highlightColor : Theme.secondaryColor
             }
             Label {
                 id: text5
@@ -196,7 +202,7 @@ Page {
                 anchors.bottomMargin: -15
                 text: daysbetween > 1 ? qsTr("days") : (daysbetween === 0 || daysbetween === 1 ? "" : (daysbetween === -1 ? qsTr("day ago") : qsTr("days ago")))
                 font.pixelSize: Theme.fontSizeMedium
-                color: Theme.secondaryHighlightColor
+                color: daysbetween >=0 ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
             Component {
                 id: contextMenuComponent
@@ -208,7 +214,10 @@ Page {
                     }
                     MenuItem {
                         text: qsTr("Delete")
-                        onClicked: remove(dayid)
+                        onClicked: {
+                            itemDeleted = true
+                            remove(dayid)
+                        }
                     }
                 }
             }

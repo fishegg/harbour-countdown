@@ -15,6 +15,8 @@ Dialog {
     property int existedDay
     property string existedDatetext
 
+    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
+
     Column {
         anchors.fill: parent
         DialogHeader {
@@ -68,6 +70,7 @@ Dialog {
 
     onAccepted: {
         newTitle = input.text
+        itemAdded = true
         if(existedTitle) {
             if(dateButton.year === 0) {
                 ST.editDays(existedDayid,newTitle,existedYear,existedMonth,existedDay,existedDatetext)
@@ -78,5 +81,12 @@ Dialog {
             ST.createDays(dayid,newTitle,dateButton.datetext,dateButton.year,dateButton.month,dateButton.day)
         }
         console.log(dateButton.year)
+        console.log(coverAdd)
+    }
+
+    onRejected: {
+        if(coverAdd) {
+            coverAdd = false
+        }
     }
 }

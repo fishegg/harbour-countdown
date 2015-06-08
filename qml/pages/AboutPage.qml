@@ -34,6 +34,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: aboutpage
+    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
@@ -83,7 +84,7 @@ Page {
                     left: parent.left
                     leftMargin: Theme.paddingMedium
                 }
-                text: "1.0-1"
+                text: "1.0-3"
             }
             SectionHeader {
                 text: qsTr("Known Issues")

@@ -48,7 +48,9 @@ CoverBackground {
     Timer {
         id: refreshdelay
         interval: 3000
-        onTriggered: updateDaysbetween()
+        onTriggered: {
+            updateDaysbetween()
+        }
     }
 
     Timer {
@@ -70,7 +72,16 @@ CoverBackground {
 
     onStatusChanged: {
         if( status === Cover.Activating ) {
-            refreshdelay.start()
+            console.log("add="+itemAdded+"delete="+itemDeleted)
+            if(itemAdded) {
+                updateDaysbetween()
+                itemAdded = false
+            }else if(itemDeleted) {
+                refreshdelay.start()
+                itemDeleted = false
+            }else {
+                updateDaysbetween()
+            }
             console.log("start and interval="+refreshTimer.interval)
         }else if( status === Cover.Deactivating ) {
             refreshTimer.stop()
@@ -92,19 +103,23 @@ CoverBackground {
         clip: true
         model: listModel
         delegate: ListView {
+            id:listview2
             height: label2.height + label3.height + Theme.paddingSmall / 10
-            property int daysbetween: refreshdays(year,month,day)
+
             function refreshdays(year,month,day) {
+                console.log(year+"."+month+"."+day)
                 var days = CALC.daysBetween(year,month,day)
                 return days
             }
+            property int daysbetween: refreshdays(year,month,day)
+
 
             Label {
                 id: label1
                 x: Theme.paddingMedium
                 text: daysbetween < 0 ? -daysbetween : (daysbetween===0 ? qsTr("0") : (daysbetween===1 ? qsTr("1") : daysbetween))
                 font.pixelSize: Theme.fontSizeExtraLarge
-                color: Theme.highlightColor
+                color: daysbetween >= 0 ? Theme.highlightColor : Theme.secondaryColor
             }
             Label {
                 id: label2
@@ -115,7 +130,7 @@ CoverBackground {
                     bottom: label1.bottom
                     bottomMargin: Theme.paddingSmall * 5/4
                 }
-                color: Theme.highlightColor
+                color: daysbetween >= 0 ? Theme.highlightColor : Theme.secondaryColor
             }
             Label {
                 id: label3
@@ -150,9 +165,10 @@ CoverBackground {
         CoverAction {
             iconSource: "image://theme/icon-cover-new"
             onTriggered: {
+                coverAdd = true
+                console.log(coverAdd)
                 mainapp.activate()
                 firstpage.createNew()
-                coverAdd = true
             }
         }
     }
