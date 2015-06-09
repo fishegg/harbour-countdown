@@ -16,10 +16,6 @@
         <translation>致谢</translation>
     </message>
     <message>
-        <source>Thanks 未知 for making the icon.</source>
-        <translation type="vanished">感谢未知制作图标</translation>
-    </message>
-    <message>
         <source>Version</source>
         <translation>版本</translation>
     </message>
@@ -38,6 +34,10 @@
     <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
         <translation>感谢BirdZhang、蝉曦、Saber、丫梁在编程方面的帮助，还有TinyTodo的作者Simo Mattila以及Worldclock的作者Arno Dekker</translation>
+    </message>
+    <message>
+        <source>Thanks MengYingJueHuan for making the icon.</source>
+        <translation>感谢梦影决幻提供图标</translation>
     </message>
 </context>
 <context>

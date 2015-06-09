@@ -35,6 +35,10 @@
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Thanks MengYingJueHuan for making the icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

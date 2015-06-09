@@ -57,15 +57,15 @@ Page {
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.")
             }
-/*            Label {
+            Label {
                 anchors {
                     left: parent.left
                     leftMargin: Theme.paddingMedium
                 }
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
-                text: qsTr("Thanks 未知 for making the icon.")
-            }*/
+                text: qsTr("Thanks MengYingJueHuan for making the icon.")
+            }
             SectionHeader {
                 text: qsTr("Author")
             }

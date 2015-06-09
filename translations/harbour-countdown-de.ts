@@ -16,10 +16,6 @@
         <translation>Dankesagung</translation>
     </message>
     <message>
-        <source>Thanks Simo Mattila who made TinyTodo. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
-        <translation type="vanished">Vielen Dank an Simo Mattila für TinyTodo. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
-    </message>
-    <message>
         <source>Version</source>
         <translation>Version</translation>
     </message>
@@ -39,24 +35,24 @@
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
         <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
     </message>
+    <message>
+        <source>Thanks MengYingJueHuan for making the icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
-    <message>
-        <source>My Cover</source>
-        <translation type="vanished">Mein Cover</translation>
-    </message>
     <message>
         <source>days later</source>
         <translation>verbleibende Tage</translation>
     </message>
     <message>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>day later</source>
@@ -83,7 +79,7 @@
     </message>
     <message>
         <source>Create New</source>
-        <translation></translation>
+        <translation>Neu erstellen</translation>
     </message>
     <message>
         <source>Save</source>
@@ -112,18 +108,6 @@
 </context>
 <context>
     <name>FirstPage</name>
-    <message>
-        <source>Show Page 2</source>
-        <translation type="vanished">Zur Seite 2</translation>
-    </message>
-    <message>
-        <source>UI Template</source>
-        <translation type="vanished">UI-Vorlage</translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation type="vanished">Hallo Matrosen</translation>
-    </message>
     <message>
         <source>Deleting</source>
         <translation>Löschen</translation>
@@ -175,17 +159,6 @@
     <message>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
-    </message>
-</context>
-<context>
-    <name>SecondPage</name>
-    <message>
-        <source>Nested Page</source>
-        <translation type="vanished">Unterseite</translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation type="vanished">Element</translation>
     </message>
 </context>
 </TS>
