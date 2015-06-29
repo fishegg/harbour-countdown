@@ -3,7 +3,7 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-countdown
 Exec=harbour-countdown
-Name=ImportantDays
+Name=Important Days
 # translation example:
 # your app name in German locale (de)
 #

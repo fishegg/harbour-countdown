@@ -37,31 +37,39 @@ Page {
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + previousicon.height + previousicontext.height
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
             PageHeader {
                 title: qsTr("About")
+            }
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "../images/harbour-countdown.png"
+            }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Important Days")
+                font.pixelSize: Theme.fontSizeMedium
+                font.bold: true
+            }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "v1.1-1"
             }
             SectionHeader {
                 text: qsTr("Credit")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks MengYingJueHuan for making the icon.")
@@ -70,46 +78,48 @@ Page {
                 text: qsTr("Author")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 text: "fishegg"
-            }
-            SectionHeader {
-                text: qsTr("Version")
-            }
-            Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
-                text: "1.0-3"
             }
             SectionHeader {
                 text: qsTr("Known Issues")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 text: qsTr("Remaining/passed days don't update at 00:00")
                 wrapMode: Text.WordWrap
             }
             SectionHeader {
-                text: qsTr("Translators")
+                text: "Translators"
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 text: "German - heubergen"
                 wrapMode: Text.WordWrap
             }
+        }
+        Image {
+            id: previousicon
+            x: Theme.paddingMedium
+            anchors {
+                top: column.bottom
+                topMargin: Theme.paddingMedium
+            }
+            width: 86
+            source: "../images/harbour-countdown-new.png"
+        }
+        Label {
+            id: previousicontext
+            width: parent.width - 3 * Theme.paddingMedium - previousicon.width
+            anchors {
+                bottom: previousicon.bottom
+                left: previousicon.right
+                leftMargin: Theme.paddingMedium
+            }
+            wrapMode: Text.WordWrap
+            text: "The icon made by MengYingJueHuan."
         }
     }
 }

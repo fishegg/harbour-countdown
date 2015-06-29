@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Jun 10 2015 fishegg <jack.tar@example.com> 1.1-1
+- New icon新图标
+
 * Wed Jun 3 2015 fishegg <jack.tar@example.com> 1.0-1
 - Support cover action增加卡片操作
 - Edit functionality增加编辑功能

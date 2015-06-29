@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation type="vanished">Version</translation>
     </message>
     <message>
         <source>Known Issues</source>
@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Translators</source>
-        <translation>Übersetzern</translation>
+        <translation type="vanished">Übersetzern</translation>
     </message>
     <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
@@ -38,6 +38,10 @@
     <message>
         <source>Thanks MengYingJueHuan for making the icon.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Important Days</source>
+        <translation type="unfinished">Wichtige Tage</translation>
     </message>
 </context>
 <context>

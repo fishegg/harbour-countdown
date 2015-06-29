@@ -41,9 +41,11 @@ CoverBackground {
     ListModel {id: listModel}
 
     CoverPlaceholder {
-                text: qsTr("No items")
-                visible: listModel.count === 0
-            }
+        id: coverplaceholder
+        text: qsTr("No items")
+        icon.source: "../images/harbour-countdown-new.png"
+        visible: listModel.count === 0
+    }
 
     Timer {
         id: refreshdelay
