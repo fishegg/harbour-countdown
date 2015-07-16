@@ -57,7 +57,7 @@ Page {
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v1.1-1"
+                text: "v1.1-3"
             }
             SectionHeader {
                 text: qsTr("Credit")
@@ -91,7 +91,7 @@ Page {
                 wrapMode: Text.WordWrap
             }
             SectionHeader {
-                text: "Translators"
+                text: qsTr("Translators")
             }
             Label {
                 x: Theme.paddingMedium

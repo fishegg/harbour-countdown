@@ -39,6 +39,10 @@
         <source>Important Days</source>
         <translation>纪念日</translation>
     </message>
+    <message>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

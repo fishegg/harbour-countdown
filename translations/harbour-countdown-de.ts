@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Translators</source>
-        <translation type="vanished">Übersetzern</translation>
+        <translation>Übersetzer</translation>
     </message>
     <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>Thanks MengYingJueHuan for making the icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vielen Dank an MengYingJueHuan für das Icon.</translation>
     </message>
     <message>
         <source>Important Days</source>
