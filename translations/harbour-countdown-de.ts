@@ -16,10 +16,6 @@
         <translation>Dankesagung</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation type="vanished">Version</translation>
-    </message>
-    <message>
         <source>Known Issues</source>
         <translation>Bekannte Fehler</translation>
     </message>
@@ -36,12 +32,12 @@
         <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
+        <source>Thanks MengYingJueHuan for making the icon below.</source>
         <translation>Vielen Dank an MengYingJueHuan für das Icon.</translation>
     </message>
     <message>
         <source>Important Days</source>
-        <translation type="unfinished">Wichtige Tage</translation>
+        <translation>Wichtige Tage</translation>
     </message>
 </context>
 <context>

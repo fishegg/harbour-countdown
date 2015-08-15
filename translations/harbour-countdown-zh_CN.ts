@@ -16,10 +16,6 @@
         <translation>致谢</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation type="vanished">版本</translation>
-    </message>
-    <message>
         <source>Known Issues</source>
         <translation>已知问题</translation>
     </message>
@@ -32,8 +28,8 @@
         <translation>感谢BirdZhang、蝉曦、Saber、丫梁在编程方面的帮助，还有TinyTodo的作者Simo Mattila以及Worldclock的作者Arno Dekker</translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
-        <translation>感谢梦影决幻提供图标</translation>
+        <source>Thanks MengYingJueHuan for making the icon below.</source>
+        <translation>感谢梦影决幻提供页面下方的图标</translation>
     </message>
     <message>
         <source>Important Days</source>

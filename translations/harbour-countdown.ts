@@ -28,15 +28,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Important Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thanks MengYingJueHuan for making the icon below.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

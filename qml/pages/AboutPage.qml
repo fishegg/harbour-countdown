@@ -37,11 +37,11 @@ Page {
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height + previousicon.height + previousicontext.height
+        contentHeight: column.height + Theme.paddingMedium
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingSmall
             PageHeader {
                 title: qsTr("About")
             }
@@ -57,7 +57,7 @@ Page {
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v1.1-3"
+                text: "v1.1-4"
             }
             SectionHeader {
                 text: qsTr("Credit")
@@ -72,7 +72,13 @@ Page {
                 x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
-                text: qsTr("Thanks MengYingJueHuan for making the icon.")
+                text: qsTr("Thanks MengYingJueHuan for making the icon below.")
+            }
+            Image {
+                id: previousicon
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 86
+                source: "../images/harbour-countdown-new.png"
             }
             SectionHeader {
                 text: qsTr("Author")
@@ -100,17 +106,7 @@ Page {
                 wrapMode: Text.WordWrap
             }
         }
-        Image {
-            id: previousicon
-            x: Theme.paddingMedium
-            anchors {
-                top: column.bottom
-                topMargin: Theme.paddingMedium
-            }
-            width: 86
-            source: "../images/harbour-countdown-new.png"
-        }
-        Label {
+        /*Label {
             id: previousicontext
             width: parent.width - 3 * Theme.paddingMedium - previousicon.width
             anchors {
@@ -120,7 +116,7 @@ Page {
             }
             wrapMode: Text.WordWrap
             text: "The icon made by MengYingJueHuan."
-        }
+        }*/
     }
 }
 
