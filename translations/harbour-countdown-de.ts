@@ -105,6 +105,10 @@
         <source>Select</source>
         <translation>Auswählen</translation>
     </message>
+    <message>
+        <source>Show on cover</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>

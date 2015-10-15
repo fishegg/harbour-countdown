@@ -57,7 +57,7 @@ Page {
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v1.1-4"
+                text: "v1.1"
             }
             SectionHeader {
                 text: qsTr("Credit")

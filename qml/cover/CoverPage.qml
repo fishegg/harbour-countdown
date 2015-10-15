@@ -63,7 +63,7 @@ CoverBackground {
     }
 
     function updateDaysbetween() {
-        ST.getDays("all")
+        ST.getDays("favorite")
         refreshTimer.interval = CALC.nextZeroPoint()
         refreshTimer.start()
     }

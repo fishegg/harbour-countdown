@@ -56,7 +56,7 @@ Page {
         }
     }
 
-    function editItem(dayid,name,year,month,day,datetext) {
+    function editItem(dayid,name,year,month,day,datetext,favorite) {
         var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"),
                                           {
                                               existedDayid: dayid,
@@ -64,7 +64,8 @@ Page {
                                               existedMonth: month,
                                               existedDay: day,
                                               existedTitle: name,
-                                              existedDatetext: datetext
+                                              existedDatetext: datetext,
+                                              favorite: favorite
                                           })
         createdialog.accepted.connect(function() {
             ST.getDays("all")
@@ -120,13 +121,16 @@ Page {
             id: listItem
             menu: contextMenuComponent
             contentHeight: text1.height + text2.height + text3.height
-//            showMenuOnPressAndHold: false
             property int daysbetween
 
-//            onClicked: {
+            onClicked: {
 //                console.log(RE.nextZeroPoint())
 //                showMenu()
-//            }
+                favorite = favorite === 1 ? 0 : 1
+                ST.editDays(dayid,name,year,month,day,datetext,favorite)
+                //tick.visible = !tick.visible
+                console.log(name+" favorite="+favorite)
+            }
 
             ListView.onRemove: RemoveAnimation {
                 target: listItem
@@ -153,7 +157,7 @@ Page {
                 triggeredOnStart: true
                 onTriggered: {
                     daysbetween = listItem.refreshdays(year,month,day)
-                    console.log("refresh done")
+                    //console.log("refresh done")
                 }
             }
 
@@ -187,6 +191,15 @@ Page {
                 text: year + "." + month + "." + day
                 color: Theme.secondaryColor
             }
+            Image {
+                id: tick
+                visible: favorite == 1 ? true : false
+                anchors {
+                    left: text3.right
+                    verticalCenter: text3.verticalCenter
+                }
+                source: "image://theme/icon-s-favorite"
+            }
             Label {
                 id: text4
                 anchors.left: text2.right
@@ -210,7 +223,7 @@ Page {
                     id: itemmenu
                     MenuItem {
                         text: qsTr("Edit")
-                        onClicked: editItem(dayid,name,year,month,day,datetext)
+                        onClicked: editItem(dayid,name,year,month,day,datetext,favorite)
                     }
                     MenuItem {
                         text: qsTr("Delete")

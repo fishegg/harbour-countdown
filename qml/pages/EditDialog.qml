@@ -14,6 +14,7 @@ Dialog {
     property int existedMonth
     property int existedDay
     property string existedDatetext
+    property int favorite: 0
 
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
@@ -64,7 +65,29 @@ Dialog {
             onClicked: openDateDialog()
         }
 
+        TextSwitch {
+            id: tswitch
+            text: qsTr("Show on cover")
+            automaticCheck: false
+            checked: favorite === 0 ? false : true
+            onClicked: if (favorite === 0){
+                           favorite = 1
+                           checked = true
+                           console.log("favortie="+favorite)
+                       }else {
+                           favorite = 0
+                           checked = false
+                           console.log("favortie="+favorite)
+                       }
+        }
+        Label{
+            text: favorite
+        }
+        Label{
+            text: tswitch.checked
+        }
     }
+
 
     canAccept: input.text.length > 0 && (existedYear !== 0 || dateButton.year !== 0) ? true : false
 
@@ -73,15 +96,16 @@ Dialog {
         itemAdded = true
         if(existedTitle) {
             if(dateButton.year === 0) {
-                ST.editDays(existedDayid,newTitle,existedYear,existedMonth,existedDay,existedDatetext)
+                ST.editDays(existedDayid,newTitle,existedYear,existedMonth,existedDay,existedDatetext,favorite)
             }else {
-                ST.editDays(existedDayid,newTitle,dateButton.year,dateButton.month,dateButton.day,dateButton.datetext)
+                ST.editDays(existedDayid,newTitle,dateButton.year,dateButton.month,dateButton.day,dateButton.datetext,favorite)
             }
         }else{
-            ST.createDays(dayid,newTitle,dateButton.datetext,dateButton.year,dateButton.month,dateButton.day)
+            ST.createDays(dayid,newTitle,dateButton.datetext,dateButton.year,dateButton.month,dateButton.day,favorite)
         }
-        console.log(dateButton.year)
-        console.log(coverAdd)
+        console.log("dateButton.year="+dateButton.year)
+        console.log("coverAdd="+coverAdd)
+        console.log("favorite="+favorite)
     }
 
     onRejected: {
