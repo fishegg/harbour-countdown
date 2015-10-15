@@ -36,6 +36,7 @@ import "calc.js" as CALC
 
 Page {
     id: page
+    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     onStatusChanged: {
         if(status === PageStatus.Activating) {
@@ -71,8 +72,6 @@ Page {
             ST.getDays("all")
         })
     }
-
-    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaListView {

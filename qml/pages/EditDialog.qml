@@ -14,7 +14,7 @@ Dialog {
     property int existedMonth
     property int existedDay
     property string existedDatetext
-    property int favorite: 0
+    property int favorite
 
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
@@ -69,22 +69,8 @@ Dialog {
             id: tswitch
             text: qsTr("Show on cover")
             automaticCheck: false
-            checked: favorite === 0 ? false : true
-            onClicked: if (favorite === 0){
-                           favorite = 1
-                           checked = true
-                           console.log("favortie="+favorite)
-                       }else {
-                           favorite = 0
-                           checked = false
-                           console.log("favortie="+favorite)
-                       }
-        }
-        Label{
-            text: favorite
-        }
-        Label{
-            text: tswitch.checked
+            checked: favorite === 1
+            onClicked:favorite = favorite === 0?1:0
         }
     }
 
