@@ -80,16 +80,18 @@ function createDays(dayid,name,datetext,year,month,day,favorite) {
 }
 
 function editDays(dayid,newTitle,year,month,day,datetext,favorite) {
-    console.log("favorite:"+favorite)
+
     var db = getDatabase();
+    var flag = false
     db.transaction(function(tx){
         var rs = tx.executeSql('UPDATE day set name=?, year=?, month=?, day=?, datetext=?, favorite=? WHERE dayid=?;',[newTitle,year,month,day,datetext,favorite,dayid]);
         if(rs.rowsAffected >0 ){
-            return true;
+            flag = true;
         }else{
-            return false;
+            flag = false;
         }
     });
+    return flag;
 }
 
 function updateFavorite(dayid,favorite) {
