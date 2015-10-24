@@ -126,9 +126,9 @@ Page {
                 var tmp = favorite === 0?1:0;
                 var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp);
                 if(flag){
-                    tick.visible = tmp === 1
+                    listModel.set(index,{"favorite":tmp})
                 }
-                listModel.set(index,{"dayid":dayid,"name":name,"year":year,"month":month,"day":day,"datetext":datetext,"favorite":tmp})
+
             }
 
             ListView.onRemove: RemoveAnimation {
