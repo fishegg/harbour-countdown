@@ -21,6 +21,8 @@ URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-countdown.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   python3-base
+Requires:   dbus-python3
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -68,6 +70,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/lipstick/notificationcategories/x-nemo.messaging.countdown.conf
-%{_datadir}/lipstick/notificationcategories/x-nemo.messaging.countdown.preview.conf
 # >> files
 # << files
