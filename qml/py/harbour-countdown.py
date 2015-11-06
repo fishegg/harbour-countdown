@@ -15,6 +15,7 @@ from basedir import *
 import datetime
 import dbus
 
+#/usr/share/lipstick/notificationcategories
 bus = dbus.SessionBus()
 object = bus.get_object('org.freedesktop.Notifications','/org/freedesktop/Notifications')
 interface = dbus.Interface(object,'org.freedesktop.Notifications')
@@ -56,7 +57,8 @@ def notify(title):
                  str(title),
                  "Countdown notification",
                  dbus.Array(),
-                 dbus.Dictionary({"x-nemo-preview-body": "Countdown notification",
+                 dbus.Dictionary({"category":"x-nemo.messaging.countdown",
+				 "x-nemo-preview-body": "Countdown notification",
                                   "x-nemo-preview-summary":str(title) },
                                   signature='sv'),
                  0)
