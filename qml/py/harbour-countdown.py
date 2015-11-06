@@ -56,7 +56,9 @@ def notify(title):
                  str(title),
                  "Countdown notification",
                  dbus.Array(),
-                 dbus.Array(),
+                 dbus.Dictionary({"x-nemo-preview-body": "Countdown notification",
+                                  "x-nemo-preview-summary":str(title) },
+                                  signature='sv'),
                  0)
 
 def diffDays(date):
