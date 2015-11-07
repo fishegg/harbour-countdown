@@ -33,7 +33,8 @@ OTHER_FILES += qml/harbour-countdown.qml \
     qml/images/harbour-countdown-new.png \
     qml/images/harbour-countdown.png \
     x-nemo.messaging.countdown.conf \
-    x-nemo.messaging.countdown.preview.conf
+    x-nemo.messaging.countdown.preview.conf \
+    qml/py/*.py \
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n

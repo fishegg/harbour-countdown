@@ -13,7 +13,7 @@ Name:       harbour-countdown
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    harbour-countdown
-Version:    1.1
+Version:    1.2
 Release:    5
 Group:      Qt/Qt
 License:    LICENSE
@@ -21,8 +21,6 @@ URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-countdown.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   python3-base
-Requires:   dbus-python3
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -69,6 +67,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-%{_datadir}/lipstick/notificationcategories/x-nemo.messaging.countdown.conf
 # >> files
 # << files

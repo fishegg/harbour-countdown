@@ -11,11 +11,12 @@ function initialize() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS day(dayid INTEGER, name TEXT, datetext TEXT, year INTEGER, month INTEGER, day INTEGER, favorite INTEGER);');
                 });
     console.log("initialized");
-    if(checkIfColumnExists("datetext") == "false") {
+
+    if(checkColumnExists("datetext") == "false") {
         console.log("datetext==false");
         updateTableDatetext();
     }
-    if(checkIfColumnExists("favorite") == "false") {
+    if(checkColumnExists("favorite") == "false") {
         console.log("favorite==false");
         updateTableFavorite();
     }
@@ -36,31 +37,29 @@ function updateTableFavorite() {
     console.log("updatetablefavorite");
     var db = getDatabase();
     db.transaction(function(tx) {
-        var rs = tx.executeSql('ALTER TABLE day ADD column favorite INTEGER SET DEFAULT 0;');
+        var rs = tx.executeSql('ALTER TABLE day ADD column favorite INTEGER DEFAULT 0;');
     });
     db.transaction(function(tx) {
         var rs = tx.executeSql('UPDATE day set favorite = 0 ;');
     });
 }
 
-function checkIfColumnExists(columnName) {
+function checkColumnExists(columnName){
     var flag = "true";
-    try {
+    var sql = 'select * from sqlite_master where name = "day" and sql like "%'+columnName+'%";';
+    console.log("SQL:"+sql)
+    try{
         var db = getDatabase();
-        db.transaction(function(tx) {
-            var rs = tx.executeSql("SELECT * FROM sqlite_master WHERE name = 'day' AND sql like '%?%'",[columnName]);
-            console.log(columnName+" "+flag)
-            if(rs.rows.item(0).count > 0) {
-                flag = "true";
-                console.log(columnName+" "+flag)
+        db.transaction(function(tx){
+          var rs =  tx.executeSql(sql);
+            if(rs.rows.length > 0) {
+               flag = "true";
             }else {
-                console.log(columnName+" "+flag)
-                flag = "false";
+               flag = "false";
             }
-            //console.log("checkifcolumnexists"+columnName+flag)
         });
     }catch(e){
-        //console.log("checkifcolumnexists"+columnName+flag)
+        console.log("exception:"+e.message)
     }
     return flag;
 }

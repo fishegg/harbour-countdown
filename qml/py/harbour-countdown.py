@@ -114,6 +114,6 @@ def mymain(inc=43200):
 #########################
 #测试代码
 if __name__ == "__main__":
-    mymain() 
+    mymain()
     
 

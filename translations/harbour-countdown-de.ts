@@ -107,7 +107,7 @@
     </message>
     <message>
         <source>Show on cover</source>
-        <translation >Auf dem Cover anzeigen</translation>
+        <translation>Auf dem Cover anzeigen</translation>
     </message>
 </context>
 <context>
