@@ -7,9 +7,9 @@ from harbour_countdown import *
 
 class TDaemon(Daemon):
     def __init__(self, *args, **kwargs):
-	pass
+        pass
     def run(self):
-	mymain()
+        mymain()
 
 def control_daemon(action):
     os.system(" ".join((sys.executable, __file__, action)))
