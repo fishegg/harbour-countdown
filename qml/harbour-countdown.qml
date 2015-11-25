@@ -32,12 +32,12 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
 import "pages/storage.js" as ST
-import org.nemomobile.time 1.0
 
 ApplicationWindow
 {
     id: mainapp
     initialPage: Component { FirstPage { } }
+    Component.onCompleted:Qt.createComponent("import org.nemomobile.time 1.0")
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     property bool coverAdd: false
     property bool itemAdded: false
