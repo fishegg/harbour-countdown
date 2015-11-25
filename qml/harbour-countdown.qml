@@ -37,7 +37,7 @@ ApplicationWindow
 {
     id: mainapp
     initialPage: Component { FirstPage { } }
-    Component.onCompleted:Qt.createComponent("import org.nemomobile.time 1.0")
+    Component.onCompleted:Qt.createQmlObject("import org.nemomobile.time 1.0")
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     property bool coverAdd: false
     property bool itemAdded: false
