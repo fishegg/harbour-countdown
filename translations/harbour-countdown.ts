@@ -36,7 +36,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon below.</source>
+        <source>Reference apps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -101,6 +105,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -109,11 +117,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Title</source>
+        <source>You can also change this setting by tapping on the item on the first page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show on cover</source>
+        <source>Display on cover</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

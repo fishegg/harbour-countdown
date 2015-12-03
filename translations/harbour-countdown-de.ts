@@ -32,12 +32,16 @@
         <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon below.</source>
-        <translation>Vielen Dank an MengYingJueHuan für das Icon.</translation>
+        <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
+        <translation>Vielen Dank an Meng Ying Jue Huan für das Icon.</translation>
     </message>
     <message>
         <source>Important Days</source>
         <translation>Wichtige Tage</translation>
+    </message>
+    <message>
+        <source>Reference apps</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -106,8 +110,12 @@
         <translation>Auswählen</translation>
     </message>
     <message>
-        <source>Show on cover</source>
-        <translation >Auf dem Cover anzeigen</translation>
+        <source>Display on cover</source>
+        <translation>Auf dem Cover anzeigen</translation>
+    </message>
+    <message>
+        <source>You can also change this setting by tapping on the item on the first page</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

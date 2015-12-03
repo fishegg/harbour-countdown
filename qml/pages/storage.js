@@ -11,11 +11,11 @@ function initialize() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS day(dayid INTEGER, name TEXT, datetext TEXT, year INTEGER, month INTEGER, day INTEGER, favorite INTEGER);');
                 });
     console.log("initialized");
-    if(checkIfColumnExists("datetext") == "false") {
+    if(checkColumnExists("datetext") == "false") {
         console.log("datetext==false");
         updateTableDatetext();
     }
-    if(checkIfColumnExists("favorite") == "false") {
+    if(checkColumnExists("favorite") == "false") {
         console.log("favorite==false");
         updateTableFavorite();
     }
@@ -36,14 +36,14 @@ function updateTableFavorite() {
     console.log("updatetablefavorite");
     var db = getDatabase();
     db.transaction(function(tx) {
-        var rs = tx.executeSql('ALTER TABLE day ADD column favorite INTEGER SET DEFAULT 0;');
+        var rs = tx.executeSql('ALTER TABLE day ADD column favorite INTEGER DEFAULT 0;');
     });
     db.transaction(function(tx) {
         var rs = tx.executeSql('UPDATE day set favorite = 0 ;');
     });
 }
 
-function checkIfColumnExists(columnName) {
+/*function checkIfColumnExists(columnName) {
     var flag = "true";
     try {
         var db = getDatabase();
@@ -60,7 +60,27 @@ function checkIfColumnExists(columnName) {
             //console.log("checkifcolumnexists"+columnName+flag)
         });
     }catch(e){
-        //console.log("checkifcolumnexists"+columnName+flag)
+        console.log("exception:"+e.message)
+    }
+    return flag;
+}*/
+
+function checkColumnExists(columnName){
+    var flag = "true";
+    var sql = 'SELECT * FROM sqlite_master WHERE name = "day" AND sql like "%'+columnName+'%";';
+    console.log("SQL:"+sql)
+    try{
+        var db = getDatabase();
+        db.transaction(function(tx){
+          var rs =  tx.executeSql(sql);
+            if(rs.rows.length > 0) {
+               flag = "true";
+            }else {
+               flag = "false";
+            }
+        });
+    }catch(e){
+        console.log("exception:"+e.message)
     }
     return flag;
 }
@@ -80,16 +100,17 @@ function createDays(dayid,name,datetext,year,month,day,favorite) {
 }
 
 function editDays(dayid,newTitle,year,month,day,datetext,favorite) {
-    console.log("favorite:"+favorite)
+    var flag = false
     var db = getDatabase();
     db.transaction(function(tx){
         var rs = tx.executeSql('UPDATE day set name=?, year=?, month=?, day=?, datetext=?, favorite=? WHERE dayid=?;',[newTitle,year,month,day,datetext,favorite,dayid]);
-        if(rs.rowsAffected >0 ){
-            return true;
+        if(rs.rowsAffected > 0 ){
+            flag = true;
         }else{
-            return false;
+            flag = false;
         }
     });
+    return flag;
 }
 
 function updateFavorite(dayid,favorite) {
