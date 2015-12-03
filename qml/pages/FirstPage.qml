@@ -36,7 +36,6 @@ import "calc.js" as CALC
 
 Page {
     id: page
-    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     onStatusChanged: {
@@ -47,9 +46,7 @@ Page {
             }
         }
     }
-    onCurrentDayChanged: {
-        ST.getDays("all")
-    }
+
     function createNew() {
         var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"))
         if(!coverAdd) {
