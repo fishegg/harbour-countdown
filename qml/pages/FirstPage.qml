@@ -38,6 +38,8 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
+    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
+
     onStatusChanged: {
         if(status === PageStatus.Activating) {
             if(coverAdd) {
@@ -45,6 +47,12 @@ Page {
                 coverAdd = false
             }
         }
+    }
+
+    onCurrentDayChanged: {
+        //listItem.daysbetween = listItem.refreshdays(year,month,day)
+        ST.getDays("all")
+        console.log("Day changed getDays")
     }
 
     function createNew() {
@@ -120,7 +128,7 @@ Page {
             id: listItem
             menu: contextMenuComponent
             contentHeight: text1.height + text2.height + text3.height
-            property int daysbetween
+            property int daysbetween: listItem.refreshdays(year,month,day)
 
             onClicked: {
                 var tmp = favorite === 0 ? 1 : 0
@@ -149,7 +157,7 @@ Page {
                 } , 3000 )
             }
 
-            Timer {
+            /*Timer {
                 id: refreshtimer
                 interval: 90000
                 repeat: true
@@ -159,7 +167,7 @@ Page {
                     daysbetween = listItem.refreshdays(year,month,day)
                     //console.log("refresh done")
                 }
-            }
+            }*/
 
             Rectangle {
                 z: -1
