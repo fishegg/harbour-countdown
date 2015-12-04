@@ -57,7 +57,7 @@ Page {
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v1.1"
+                text: "v1.3"
             }
             SectionHeader {
                 text: qsTr("Credit")
@@ -72,7 +72,7 @@ Page {
                 x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
-                text: qsTr("Thanks MengYingJueHuan for making the icon below.")
+                text: qsTr("Thanks Meng Ying Jue Huan for making the icon below.")
             }
             Image {
                 id: previousicon
@@ -81,11 +81,20 @@ Page {
                 source: "../images/harbour-countdown-new.png"
             }
             SectionHeader {
+                text: qsTr("Reference apps")
+            }
+            Label {
+                x: Theme.paddingMedium
+                text: "我的快递 by Birdzhang<br>
+                       TinyTodo by Simo Mattila<br>
+                       Worldclock by Arno Dekker"
+            }
+            SectionHeader {
                 text: qsTr("Author")
             }
             Label {
                 x: Theme.paddingMedium
-                text: "fishegg"
+                text: "fishegg<br>Birdzhang"
             }
             SectionHeader {
                 text: qsTr("Known Issues")
@@ -106,17 +115,6 @@ Page {
                 wrapMode: Text.WordWrap
             }
         }
-        /*Label {
-            id: previousicontext
-            width: parent.width - 3 * Theme.paddingMedium - previousicon.width
-            anchors {
-                bottom: previousicon.bottom
-                left: previousicon.right
-                leftMargin: Theme.paddingMedium
-            }
-            wrapMode: Text.WordWrap
-            text: "The icon made by MengYingJueHuan."
-        }*/
     }
 }
 

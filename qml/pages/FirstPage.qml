@@ -129,12 +129,12 @@ Page {
             property int daysbetween
 
             onClicked: {
-                var tmp = favorite === 0?1:0;
-                var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp);
+                var tmp = favorite === 0 ? 1 : 0
+                var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp)
+                console.log("flag="+flag)
                 if(flag){
                     listModel.set(index,{"favorite":tmp})
                 }
-
             }
 
             ListView.onRemove: RemoveAnimation {

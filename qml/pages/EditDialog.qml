@@ -16,64 +16,70 @@ Dialog {
     property string existedDatetext
     property int favorite
 
+
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
-    Column {
+    SilicaFlickable {
         anchors.fill: parent
-        DialogHeader {
-            title: existedTitle ? qsTr("Edit") : qsTr("Create New")
-            acceptText: existedTitle ? qsTr("Save") : qsTr("Create")
-        }
-        TextField {
-            id: input
+        contentHeight: column.height
+        Column {
+            id:column
             width: parent.width
-            focus: dateButton.year === 0 ? true : false
-            placeholderText: qsTr("Enter a new title")
-            label: qsTr("Title")
-            text: existedTitle ? existedTitle : ""
-            EnterKey.enabled: text.length > 0
-            EnterKey.text: dateButton.year === 0 && existedYear === 0 ? qsTr("Date") : (existedYear === 0 ? qsTr("Create") : qsTr("Save"))
-            EnterKey.onClicked: dateButton.year === 0 && existedYear === 0 ? dateButton.openDateDialog() : accept()
-        }
-        ValueButton {
-            id: dateButton
-            property date selectedDate
-            property int year
-            property int month
-            property int day
-            property string datetext
+            DialogHeader {
+                title: existedTitle ? qsTr("Edit") : qsTr("Create New")
+                acceptText: existedTitle ? qsTr("Save") : qsTr("Create")
+            }
+            TextField {
+                id: input
+                width: parent.width
+                focus: dateButton.year === 0 ? true : false
+                placeholderText: qsTr("Enter a new title")
+                label: qsTr("Title")
+                text: existedTitle ? existedTitle : ""
+                EnterKey.enabled: text.length > 0
+                EnterKey.text: dateButton.year === 0 && existedYear === 0 ? qsTr("Date") : (existedYear === 0 ? qsTr("Create") : qsTr("Save"))
+                EnterKey.onClicked: dateButton.year === 0 && existedYear === 0 ? dateButton.openDateDialog() : accept()
+            }
+            ValueButton {
+                id: dateButton
+                property date selectedDate
+                property int year
+                property int month
+                property int day
+                property string datetext
 
-            function openDateDialog() {
-                var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
-                                date: selectedDate,
-                                allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
-                             })
+                function openDateDialog() {
+                    var dialog = pageStack.push("Sailfish.Silica.DatePickerDialog", {
+                                    date: selectedDate,
+                                    allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
+                                 })
 
-                dialog.accepted.connect(function() {
-                    value = dialog.dateText
-                    selectedDate = dialog.date
-                    year = dialog.year
-                    month = dialog.month
-                    day = dialog.day
-                    datetext = dialog.dateText
-                })
+                    dialog.accepted.connect(function() {
+                        value = dialog.dateText
+                        selectedDate = dialog.date
+                        year = dialog.year
+                        month = dialog.month
+                        day = dialog.day
+                        datetext = dialog.dateText
+                    })
+                }
+
+                label: qsTr("Date")
+                value: existedDatetext ? existedDatetext : qsTr("Select")
+                width: parent.width
+                onClicked: openDateDialog()
             }
 
-            label: qsTr("Date")
-            value: existedDatetext ? existedDatetext : qsTr("Select")
-            width: parent.width
-            onClicked: openDateDialog()
-        }
-
-        TextSwitch {
-            id: tswitch
-            text: qsTr("Show on cover")
-            automaticCheck: false
-            checked: favorite === 1
-            onClicked:favorite = favorite === 0?1:0
+            TextSwitch {
+                id: tswitch
+                text: qsTr("Display on cover")
+                description: qsTr("You can also change this setting by tapping on the item on the first page")
+                automaticCheck: false
+                checked: favorite === 1
+                onClicked:favorite = favorite === 0?1:0
+            }
         }
     }
-
 
     canAccept: input.text.length > 0 && (existedYear !== 0 || dateButton.year !== 0) ? true : false
 

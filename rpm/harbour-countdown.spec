@@ -13,8 +13,13 @@ Name:       harbour-countdown
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    harbour-countdown
+<<<<<<< HEAD
 Version:    1.2
 Release:    5
+=======
+Version:    1.3
+Release:    2
+>>>>>>> 44efd12a364897661f090612507539c0bef00cf5
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
