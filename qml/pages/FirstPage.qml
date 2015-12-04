@@ -33,9 +33,15 @@ import Sailfish.Silica 1.0
 import "storage.js" as ST
 import "calc.js" as CALC
 
-
 Page {
     id: page
+
+    property var currentDay:Qt.formatDateTime(wallClock.time, "mm")
+    onCurrentDayChanged: {
+        console.log(currentDay)
+        ST.getDays("all")
+    }
+
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     onStatusChanged: {
