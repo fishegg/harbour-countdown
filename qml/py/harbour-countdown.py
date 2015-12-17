@@ -11,7 +11,6 @@ import os
 import threading
 import sqlite3
 import hashlib
-from basedir import *
 import datetime
 import dbus
 
@@ -21,6 +20,7 @@ object = bus.get_object('org.freedesktop.Notifications','/org/freedesktop/Notifi
 interface = dbus.Interface(object,'org.freedesktop.Notifications')
 #print(interface.GetCapabilities())
 
+XDG_DATA_HOME="/home/nemo/.local/share"
 
 __appName="harbour-countdown"
 
@@ -65,9 +65,9 @@ def notify(title):
 
 def diffDays(date):
     now = datetime.datetime.now()
-    diff = now - date
+    diff = date - now
     days = diff.days
-    if days > 0 and days < 2:
+    if days >= 0 and days < 1:
         return True
     else:
         return False

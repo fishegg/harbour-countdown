@@ -10,11 +10,7 @@ function initialize() {
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS day(dayid INTEGER, name TEXT, datetext TEXT, year INTEGER, month INTEGER, day INTEGER, favorite INTEGER);');
                 });
-    console.log("initialized");
-<<<<<<< HEAD
 
-=======
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
     if(checkColumnExists("datetext") == "false") {
         console.log("datetext==false");
         updateTableDatetext();
@@ -47,31 +43,6 @@ function updateTableFavorite() {
     });
 }
 
-<<<<<<< HEAD
-function checkColumnExists(columnName){
-=======
-/*function checkIfColumnExists(columnName) {
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
-    var flag = "true";
-    var sql = 'select * from sqlite_master where name = "day" and sql like "%'+columnName+'%";';
-    console.log("SQL:"+sql)
-    try{
-        var db = getDatabase();
-        db.transaction(function(tx){
-          var rs =  tx.executeSql(sql);
-            if(rs.rows.length > 0) {
-               flag = "true";
-            }else {
-               flag = "false";
-            }
-        });
-    }catch(e){
-        console.log("exception:"+e.message)
-<<<<<<< HEAD
-=======
-    }
-    return flag;
-}*/
 
 function checkColumnExists(columnName){
     var flag = "true";
@@ -89,7 +60,6 @@ function checkColumnExists(columnName){
         });
     }catch(e){
         console.log("exception:"+e.message)
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
     }
     return flag;
 }
@@ -109,20 +79,14 @@ function createDays(dayid,name,datetext,year,month,day,favorite) {
 }
 
 function editDays(dayid,newTitle,year,month,day,datetext,favorite) {
-<<<<<<< HEAD
 
-=======
     var flag = false
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
     var db = getDatabase();
     var flag = false
     db.transaction(function(tx){
         var rs = tx.executeSql('UPDATE day set name=?, year=?, month=?, day=?, datetext=?, favorite=? WHERE dayid=?;',[newTitle,year,month,day,datetext,favorite,dayid]);
-<<<<<<< HEAD
-        if(rs.rowsAffected >0 ){
-=======
+
         if(rs.rowsAffected > 0 ){
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
             flag = true;
         }else{
             flag = false;
