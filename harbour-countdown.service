@@ -1,0 +1,10 @@
+[Unit]
+Description=Run CountDown Job
+
+[Service]
+Type=simple
+RemainAfterExit=no
+ExecStart=/usr/share/harbour-countdown/qml/py/jobs.sh
+
+[Install]
+WantedBy=multi-user.target

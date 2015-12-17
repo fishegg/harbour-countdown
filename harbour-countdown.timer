@@ -1,0 +1,10 @@
+[Unit]
+Description=Countdown timer
+
+[Timer]
+OnBootSec=200
+OnUnitInactiveSec=120
+
+[Install]
+WantedBy=multi-user.target
+

@@ -16,6 +16,11 @@ CONFIG += sailfishapp
 
 SOURCES += src/harbour-countdown.cpp
 
+service.path = /etc/systemd/system/
+service.files += harbour-countdown.service \
+                harbour-countdown.timer
+INSTALLS += service
+
 OTHER_FILES += qml/harbour-countdown.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
