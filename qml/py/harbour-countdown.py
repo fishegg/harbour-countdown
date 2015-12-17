@@ -6,9 +6,7 @@ Created on 2015年11月5日
 @author: 0312birdzhang
 '''
 import time
-import sched
 import os
-import threading
 import sqlite3
 import hashlib
 import datetime
@@ -16,26 +14,15 @@ import dbus
 
 #/usr/share/lipstick/notificationcategories
 bus = dbus.SessionBus()
-object = bus.get_object('org.freedesktop.Notifications','/org/freedesktop/Notifications')
-interface = dbus.Interface(object,'org.freedesktop.Notifications')
+noobject = bus.get_object('org.freedesktop.Notifications','/org/freedesktop/Notifications')
+interface = dbus.Interface(noobject,'org.freedesktop.Notifications')
 #print(interface.GetCapabilities())
-
 XDG_DATA_HOME="/home/nemo/.local/share"
 
 __appName="harbour-countdown"
 
 DbPath=os.path.join(XDG_DATA_HOME, __appName,__appName, "QML","OfflineStorage","Databases")
 
-##########################
-#初始化sched模块的scheduler类
-##########################
-s = sched.scheduler(time.time,time.sleep)
-
-#h = hashlib.new('days')
-#dbname=h.hexdigest()
-##########################
-#调度函数定义
-##########################
 
 def getDbname():
     h = hashlib.md5()
@@ -71,7 +58,7 @@ def diffDays(date):
         return True
     else:
         return False
-    
+
 def getDatas():
     try:
         conn = sqlite3.connect(getDbname())
@@ -83,10 +70,8 @@ def getDatas():
                 notify(i[1])
     except Exception as e:
         return
-    conn.close()    
+    conn.close()
 
 
 if __name__ == "__main__":
     getDatas()
-    
-
