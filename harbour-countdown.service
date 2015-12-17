@@ -4,7 +4,7 @@ Description=Run CountDown Job
 [Service]
 Type=simple
 RemainAfterExit=no
-ExecStart=/usr/share/harbour-countdown/qml/py/jobs.sh
+ExecStart=/usr/share/harbour-countdown/qml/py/harbour-countdown.sh
 
 [Install]
 WantedBy=multi-user.target
