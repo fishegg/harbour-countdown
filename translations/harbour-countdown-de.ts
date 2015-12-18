@@ -110,17 +110,12 @@
         <translation>Auswählen</translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <source>Show on cover</source>
-        <translation>Auf dem Cover anzeigen</translation>
-=======
         <source>Display on cover</source>
         <translation>Auf dem Cover anzeigen</translation>
     </message>
     <message>
         <source>You can also change this setting by tapping on the item on the first page</source>
         <translation type="unfinished"></translation>
->>>>>>> 44efd12a364897661f090612507539c0bef00cf5
     </message>
 </context>
 <context>
