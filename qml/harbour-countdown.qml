@@ -38,15 +38,14 @@ ApplicationWindow
 {
     id: mainapp
     initialPage: Component { FirstPage { } }
+    Component.onCompleted:{
+        wallClock = Qt.createQmlObject("import org.nemomobile.time 1.0;WallClock {enabled: true;updateFrequency: WallClock.Minute}",mainapp);
+    }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     property bool coverAdd: false
     property bool itemAdded: false
     property bool itemDeleted: false
-    WallClock {
-            id: wallClock
-            enabled: true
-            updateFrequency: WallClock.Minute
-        }
+    property var wallClock
 }
 
 
