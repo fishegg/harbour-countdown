@@ -46,6 +46,10 @@ ApplicationWindow
     property bool itemAdded: false
     property bool itemDeleted: false
     property var wallClock
+
+    SignalCenter{
+      id:signalcenter
+    }
 }
 
 

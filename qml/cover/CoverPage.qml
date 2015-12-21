@@ -47,20 +47,12 @@ CoverBackground {
         visible: listModel.count === 0
     }
 
-    Timer {
-        id: refreshdelay
-        interval: 3000
-        onTriggered: {
-            updateDaysbetween()
+   Connections {
+        target: signalCenter
+        onAdded: {
+            updateDaysbetween();
         }
-    }
-
-    Timer {
-        id: refreshTimer
-        onTriggered: {
-            updateDaysbetween()
-        }
-    }
+   }
 
     function updateDaysbetween() {
         ST.getDays("favorite")

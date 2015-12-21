@@ -38,17 +38,17 @@ def parseTime(year,month,day):
 提醒
 """
 def notify(title):
-    interface.Notify("harbour-countdown",
+    interface.Notify("Countdown",
                  0,
                  "/usr/share/icons/hicolor/86x86/apps/harbour-countdown.png",
                  str(title),
                  "Countdown notification",
                  dbus.Array(),
-                 dbus.Dictionary({"category":"x-nemo.messaging.countdown",
+                 dbus.Dictionary({"desktop-entry":"/usr/share/applications/harbour-countdown.desktop",
 				 "x-nemo-preview-body": "Countdown notification",
                                   "x-nemo-preview-summary":str(title) },
                                   signature='sv'),
-                 0)
+                 60)
 
 def diffDays(date):
     now = datetime.datetime.now()

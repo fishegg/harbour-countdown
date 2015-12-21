@@ -3,7 +3,7 @@ Description=Countdown timer
 
 [Timer]
 OnBootSec=200
-OnUnitInactiveSec=60
+OnUnitInactiveSec=3600
 
 [Install]
 WantedBy=timers.target

@@ -36,7 +36,7 @@ import "calc.js" as CALC
 Page {
     id: page
 
-    property var currentDay:Qt.formatDateTime(wallClock.time, "mm")
+    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
     onCurrentDayChanged: {
         console.log(currentDay)
         ST.getDays("all")
@@ -46,14 +46,6 @@ Page {
 
     property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
 
-    onStatusChanged: {
-        if(status === PageStatus.Activating) {
-            if(coverAdd) {
-                ST.getDays("all")
-                coverAdd = false
-            }
-        }
-    }
 
     onCurrentDayChanged: {
         //listItem.daysbetween = listItem.refreshdays(year,month,day)
@@ -66,6 +58,7 @@ Page {
         if(!coverAdd) {
             createdialog.accepted.connect(function() {
                 ST.getDays("all")
+                signalcenter.added();
                 console.log("getDays")
             })
         }
