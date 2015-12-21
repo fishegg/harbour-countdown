@@ -10,7 +10,7 @@ function initialize() {
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS day(dayid INTEGER, name TEXT, datetext TEXT, year INTEGER, month INTEGER, day INTEGER, favorite INTEGER);');
                 });
-    console.log("initialized");
+
     if(checkColumnExists("datetext") == "false") {
         console.log("datetext==false");
         updateTableDatetext();
@@ -43,27 +43,6 @@ function updateTableFavorite() {
     });
 }
 
-/*function checkIfColumnExists(columnName) {
-    var flag = "true";
-    try {
-        var db = getDatabase();
-        db.transaction(function(tx) {
-            var rs = tx.executeSql("SELECT * FROM sqlite_master WHERE name = 'day' AND sql like '%?%'",[columnName]);
-            console.log(columnName+" "+flag)
-            if(rs.rows.item(0).count > 0) {
-                flag = "true";
-                console.log(columnName+" "+flag)
-            }else {
-                console.log(columnName+" "+flag)
-                flag = "false";
-            }
-            //console.log("checkifcolumnexists"+columnName+flag)
-        });
-    }catch(e){
-        console.log("exception:"+e.message)
-    }
-    return flag;
-}*/
 
 function checkColumnExists(columnName){
     var flag = "true";
@@ -100,10 +79,13 @@ function createDays(dayid,name,datetext,year,month,day,favorite) {
 }
 
 function editDays(dayid,newTitle,year,month,day,datetext,favorite) {
+
     var flag = false
     var db = getDatabase();
+    var flag = false
     db.transaction(function(tx){
         var rs = tx.executeSql('UPDATE day set name=?, year=?, month=?, day=?, datetext=?, favorite=? WHERE dayid=?;',[newTitle,year,month,day,datetext,favorite,dayid]);
+
         if(rs.rowsAffected > 0 ){
             flag = true;
         }else{

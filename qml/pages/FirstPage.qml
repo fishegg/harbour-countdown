@@ -33,21 +33,19 @@ import Sailfish.Silica 1.0
 import "storage.js" as ST
 import "calc.js" as CALC
 
-
 Page {
     id: page
+
+    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
+    onCurrentDayChanged: {
+        console.log(currentDay)
+        ST.getDays("all")
+    }
+
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
 
-    onStatusChanged: {
-        if(status === PageStatus.Activating) {
-            if(coverAdd) {
-                ST.getDays("all")
-                coverAdd = false
-            }
-        }
-    }
 
     onCurrentDayChanged: {
         //listItem.daysbetween = listItem.refreshdays(year,month,day)
@@ -60,6 +58,7 @@ Page {
         if(!coverAdd) {
             createdialog.accepted.connect(function() {
                 ST.getDays("all")
+                signalcenter.added();
                 console.log("getDays")
             })
         }
@@ -135,7 +134,6 @@ Page {
                 var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp)
                 console.log("flag="+flag)
                 if(flag){
-                    //tick.visible = tmp === 1
                     listModel.set(index,{"favorite":tmp})
                 }
             }

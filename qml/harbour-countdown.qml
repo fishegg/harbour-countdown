@@ -32,6 +32,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
 import "pages/storage.js" as ST
+import org.nemomobile.time 1.0
 
 ApplicationWindow
 {
@@ -45,6 +46,10 @@ ApplicationWindow
     property bool itemAdded: false
     property bool itemDeleted: false
     property var wallClock
+
+    SignalCenter{
+      id:signalcenter
+    }
 }
 
 

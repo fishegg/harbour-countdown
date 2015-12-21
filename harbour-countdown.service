@@ -1,0 +1,12 @@
+[Unit]
+Description=Run CountDown Job
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/share/harbour-countdown/qml/py/harbour-countdown.py
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/100000/dbus/user_bus_socket
+User=nemo
+
+[Install]
+WantedBy=multi-user.target

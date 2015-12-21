@@ -61,11 +61,37 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
+%post
+systemctl start harbour-countdown.timer
+systemctl enable harbour-countdown.timer
+systemctl start harbour-countdown.service
+systemctl enable harbour-countdown.service
+
+%preun
+
+%postun
+if [ $1 = 0 ]; then
+    // Do stuff specific to uninstalls
+systemctl stop harbour-countdown.timer
+systemctl disable harbour-countdown.timer
+systemctl stop harbour-countdown.service
+systemctl disable harbour-countdown.service
+rm /etc/systemd/system/harbour-countdown.timer
+rm /etc/systemd/system/harbour-countdown.service
+rm -rf /usr/share/harbour-countdown
+else
+if [ $1 = 1 ]; then
+    // Do stuff specific to upgrades
+echo "Upgrading"
+fi
+fi
+
 %files
 %defattr(-,root,root,-)
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+/etc/systemd/system/
 # >> files
 # << files

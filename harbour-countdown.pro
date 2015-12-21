@@ -16,6 +16,12 @@ CONFIG += sailfishapp
 
 SOURCES += src/harbour-countdown.cpp
 
+service.path = /etc/systemd/system/
+service.files += harbour-countdown.service \
+                harbour-countdown.timer
+
+INSTALLS += service
+
 OTHER_FILES += qml/harbour-countdown.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
@@ -31,8 +37,11 @@ OTHER_FILES += qml/harbour-countdown.qml \
     qml/pages/EditDialog.qml \
     images/harbour-countdown.png \
     qml/images/harbour-countdown-new.png \
-    qml/images/harbour-countdown.png
-
+    qml/images/harbour-countdown.png \
+    qml/py/*.py \
+    qml/py/*.sh \
+    harbour-countdown.service \
+    harbour-countdown.timer
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
