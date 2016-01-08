@@ -16,10 +16,6 @@
         <translation>Dankesagung</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation>Version</translation>
-    </message>
-    <message>
         <source>Known Issues</source>
         <translation>Bekannte Fehler</translation>
     </message>
@@ -36,8 +32,16 @@
         <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
-        <translation>Vielen Dank an MengYingJueHuan für das Icon.</translation>
+        <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
+        <translation>Vielen Dank an Meng Ying Jue Huan für das Icon.</translation>
+    </message>
+    <message>
+        <source>Important Days</source>
+        <translation>Wichtige Tage</translation>
+    </message>
+    <message>
+        <source>Reference apps</source>
+        <translation>Referenz Apps</translation>
     </message>
 </context>
 <context>
@@ -104,6 +108,14 @@
     <message>
         <source>Select</source>
         <translation>Auswählen</translation>
+    </message>
+    <message>
+        <source>Display on cover</source>
+        <translation>Auf dem Cover anzeigen</translation>
+    </message>
+    <message>
+        <source>You can also change this setting by tapping on the item on the first page</source>
+        <translation>Du kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst</translation>
     </message>
 </context>
 <context>
