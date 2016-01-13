@@ -16,10 +16,6 @@
         <translation>致谢</translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation>版本</translation>
-    </message>
-    <message>
         <source>Known Issues</source>
         <translation>已知问题</translation>
     </message>
@@ -28,16 +24,24 @@
         <translation>剩余/已过日数在零点时不会更新</translation>
     </message>
     <message>
-        <source>Translators</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
         <translation>感谢BirdZhang、蝉曦、Saber、丫梁在编程方面的帮助，还有TinyTodo的作者Simo Mattila以及Worldclock的作者Arno Dekker</translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
-        <translation>感谢梦影决幻提供图标</translation>
+        <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
+        <translation>感谢梦影决幻提供下方的图标</translation>
+    </message>
+    <message>
+        <source>Important Days</source>
+        <translation>纪念日</translation>
+    </message>
+    <message>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reference apps</source>
+        <translation>参考程序</translation>
     </message>
 </context>
 <context>
@@ -105,12 +109,20 @@
         <source>Select</source>
         <translation>未选择</translation>
     </message>
+    <message>
+        <source>Display on cover</source>
+        <translation>显示于后台卡片</translation>
+    </message>
+    <message>
+        <source>You can also change this setting by tapping on the item on the first page</source>
+        <translation>在首页点击这个纪念日亦可更改本设置</translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Deleting</source>
-        <translation>删除</translation>
+        <translation>即将删除</translation>
     </message>
     <message>
         <source>Countdown to</source>

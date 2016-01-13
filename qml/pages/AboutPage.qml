@@ -37,63 +37,70 @@ Page {
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: column.height + Theme.paddingMedium
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingSmall
             PageHeader {
                 title: qsTr("About")
+            }
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "../images/harbour-countdown.png"
+            }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Important Days")
+                font.pixelSize: Theme.fontSizeMedium
+                font.bold: true
+            }
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "v1.3"
             }
             SectionHeader {
                 text: qsTr("Credit")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 wrapMode: Text.WordWrap
-                text: qsTr("Thanks MengYingJueHuan for making the icon.")
+                text: qsTr("Thanks Meng Ying Jue Huan for making the icon below.")
+            }
+            Image {
+                id: previousicon
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 86
+                source: "../images/harbour-countdown-new.png"
+            }
+            SectionHeader {
+                text: qsTr("Reference apps")
+            }
+            Label {
+                x: Theme.paddingMedium
+                text: "我的快递 by Birdzhang<br>
+                       TinyTodo by Simo Mattila<br>
+                       Worldclock by Arno Dekker"
             }
             SectionHeader {
                 text: qsTr("Author")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
-                text: "fishegg"
-            }
-            SectionHeader {
-                text: qsTr("Version")
-            }
-            Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
-                text: "1.0-3"
+                x: Theme.paddingMedium
+                text: "fishegg<br>Birdzhang"
             }
             SectionHeader {
                 text: qsTr("Known Issues")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 text: qsTr("Remaining/passed days don't update at 00:00")
                 wrapMode: Text.WordWrap
@@ -102,10 +109,7 @@ Page {
                 text: qsTr("Translators")
             }
             Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.paddingMedium
-                }
+                x: Theme.paddingMedium
                 width: parent.width - 2 * Theme.paddingMedium
                 text: "German - heubergen"
                 wrapMode: Text.WordWrap

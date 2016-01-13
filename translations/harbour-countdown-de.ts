@@ -115,7 +115,7 @@
     </message>
     <message>
         <source>You can also change this setting by tapping on the item on the first page</source>
-        <translation>Du kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst</translation>
+        <translationDu kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst></translation>
     </message>
 </context>
 <context>

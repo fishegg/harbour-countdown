@@ -36,6 +36,9 @@ import "calc.js" as CALC
 
 Page {
     id: page
+    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
+
+    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
 
     onStatusChanged: {
         if(status === PageStatus.Activating) {
@@ -44,6 +47,12 @@ Page {
                 coverAdd = false
             }
         }
+    }
+
+    onCurrentDayChanged: {
+        //listItem.daysbetween = listItem.refreshdays(year,month,day)
+        ST.getDays("all")
+        console.log("Day changed getDays")
     }
 
     function createNew() {
@@ -56,7 +65,7 @@ Page {
         }
     }
 
-    function editItem(dayid,name,year,month,day,datetext) {
+    function editItem(dayid,name,year,month,day,datetext,favorite) {
         var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"),
                                           {
                                               existedDayid: dayid,
@@ -64,14 +73,13 @@ Page {
                                               existedMonth: month,
                                               existedDay: day,
                                               existedTitle: name,
-                                              existedDatetext: datetext
+                                              existedDatetext: datetext,
+                                              favorite: favorite
                                           })
         createdialog.accepted.connect(function() {
             ST.getDays("all")
         })
     }
-
-    allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaListView {
@@ -120,13 +128,17 @@ Page {
             id: listItem
             menu: contextMenuComponent
             contentHeight: text1.height + text2.height + text3.height
-//            showMenuOnPressAndHold: false
-            property int daysbetween
+            property int daysbetween: listItem.refreshdays(year,month,day)
 
-//            onClicked: {
-//                console.log(RE.nextZeroPoint())
-//                showMenu()
-//            }
+            onClicked: {
+                var tmp = favorite === 0 ? 1 : 0
+                var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp)
+                console.log("flag="+flag)
+                if(flag){
+                    //tick.visible = tmp === 1
+                    listModel.set(index,{"favorite":tmp})
+                }
+            }
 
             ListView.onRemove: RemoveAnimation {
                 target: listItem
@@ -145,7 +157,7 @@ Page {
                 } , 3000 )
             }
 
-            Timer {
+            /*Timer {
                 id: refreshtimer
                 interval: 90000
                 repeat: true
@@ -153,9 +165,9 @@ Page {
                 triggeredOnStart: true
                 onTriggered: {
                     daysbetween = listItem.refreshdays(year,month,day)
-                    console.log("refresh done")
+                    //console.log("refresh done")
                 }
-            }
+            }*/
 
             Rectangle {
                 z: -1
@@ -187,6 +199,15 @@ Page {
                 text: year + "." + month + "." + day
                 color: Theme.secondaryColor
             }
+            Image {
+                id: tick
+                visible: favorite === 1
+                anchors {
+                    left: text3.right
+                    verticalCenter: text3.verticalCenter
+                }
+                source: "image://theme/icon-s-favorite"
+            }
             Label {
                 id: text4
                 anchors.left: text2.right
@@ -210,7 +231,7 @@ Page {
                     id: itemmenu
                     MenuItem {
                         text: qsTr("Edit")
-                        onClicked: editItem(dayid,name,year,month,day,datetext)
+                        onClicked: editItem(dayid,name,year,month,day,datetext,favorite)
                     }
                     MenuItem {
                         text: qsTr("Delete")

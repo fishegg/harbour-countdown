@@ -28,7 +28,10 @@ OTHER_FILES += qml/harbour-countdown.qml \
     translations/harbour-countdown-zh_CN.ts \
     qml/pages/AboutPage.qml \
     rpm/harbour-countdown.changes \
-    qml/pages/EditDialog.qml
+    qml/pages/EditDialog.qml \
+    images/harbour-countdown.png \
+    qml/images/harbour-countdown-new.png \
+    qml/images/harbour-countdown.png
 
 # to disable building translations every time, comment out the
 # following CONFIG line

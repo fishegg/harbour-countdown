@@ -16,10 +16,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Known Issues</source>
         <translation type="unfinished"></translation>
     </message>
@@ -28,15 +24,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Translators</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks MengYingJueHuan for making the icon.</source>
+        <source>Important Days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reference apps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -101,6 +105,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -109,7 +117,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Title</source>
+        <source>You can also change this setting by tapping on the item on the first page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display on cover</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
