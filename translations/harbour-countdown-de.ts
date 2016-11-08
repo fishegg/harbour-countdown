@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Reference apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenz Apps</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
     </message>
     <message>
         <source>You can also change this setting by tapping on the item on the first page</source>
-        <translation type="unfinished"></translation>
+        <translationDu kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst></translation>
     </message>
 </context>
 <context>
