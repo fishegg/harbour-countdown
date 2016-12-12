@@ -30,8 +30,10 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.countdown.settings 1.0
 import "pages"
 import "pages/storage.js" as ST
+import "items"
 
 ApplicationWindow
 {
@@ -45,6 +47,10 @@ ApplicationWindow
     property bool itemAdded: false
     property bool itemDeleted: false
     property var wallClock
+
+    /*Settings {
+        id: settings
+    }*/
 }
 
 

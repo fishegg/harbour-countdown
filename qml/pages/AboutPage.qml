@@ -28,7 +28,7 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 
 
@@ -37,80 +37,97 @@ Page {
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height + Theme.paddingMedium
+        contentHeight: column.height + column.spacing
+
         Column {
             id: column
             width: parent.width
-            spacing: Theme.paddingSmall
+            spacing: Theme.paddingMedium
+
             PageHeader {
                 title: qsTr("About")
             }
+
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: "../images/harbour-countdown.png"
             }
+
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Important Days")
                 font.pixelSize: Theme.fontSizeMedium
                 font.bold: true
             }
+
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "v1.3"
             }
+
             SectionHeader {
                 text: qsTr("Credit")
             }
+
             Label {
-                x: Theme.paddingMedium
-                width: parent.width - 2 * Theme.paddingMedium
+                x: Theme.paddingLarge
+                width: parent.width - 2 * x
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.")
             }
+
             Label {
-                x: Theme.paddingMedium
-                width: parent.width - 2 * Theme.paddingMedium
+                x: Theme.paddingLarge
+                width: parent.width - 2 * x
                 wrapMode: Text.WordWrap
                 text: qsTr("Thanks Meng Ying Jue Huan for making the icon below.")
             }
+
             Image {
                 id: previousicon
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: 86
                 source: "../images/harbour-countdown-new.png"
             }
+
             SectionHeader {
                 text: qsTr("Reference apps")
             }
+
             Label {
-                x: Theme.paddingMedium
+                x: Theme.paddingLarge
                 text: "我的快递 by Birdzhang<br>
                        TinyTodo by Simo Mattila<br>
                        Worldclock by Arno Dekker"
             }
+
             SectionHeader {
                 text: qsTr("Author")
             }
+
             Label {
-                x: Theme.paddingMedium
+                x: Theme.paddingLarge
                 text: "fishegg<br>Birdzhang"
             }
+
             SectionHeader {
                 text: qsTr("Known Issues")
             }
+
             Label {
-                x: Theme.paddingMedium
-                width: parent.width - 2 * Theme.paddingMedium
+                x: Theme.paddingLarge
+                width: parent.width - 2 * x
                 text: qsTr("Remaining/passed days don't update at 00:00")
                 wrapMode: Text.WordWrap
             }
+
             SectionHeader {
                 text: qsTr("Translators")
             }
+
             Label {
-                x: Theme.paddingMedium
-                width: parent.width - 2 * Theme.paddingMedium
+                x: Theme.paddingLarge
+                width: parent.width - 2 * x
                 text: "German - heubergen"
                 wrapMode: Text.WordWrap
             }

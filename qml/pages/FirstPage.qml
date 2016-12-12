@@ -28,10 +28,11 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
+import harbour.countdown.settings 1.0
 import "storage.js" as ST
-import "calc.js" as CALC
+import "compute.js" as Compute
 
 
 Page {
@@ -39,20 +40,26 @@ Page {
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
     property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
+    property int seperator_type
+    property string seperator
+    property int date_format_type
 
-    onStatusChanged: {
-        if(status === PageStatus.Activating) {
-            if(coverAdd) {
-                ST.getDays("all")
-                coverAdd = false
-            }
-        }
+    function update_settings() {
+        date_format_type = settings.get_date_format()
+        set_seperator()
     }
 
-    onCurrentDayChanged: {
-        //listItem.daysbetween = listItem.refreshdays(year,month,day)
-        ST.getDays("all")
-        console.log("Day changed getDays")
+    function set_seperator() {
+        seperator_type = settings.get_seperator_type()
+        switch(seperator_type) {
+        case Settings.Period: seperator = "."
+            break
+        case Settings.Slash: seperator = "/"
+            break
+        case Settings.Hhyphen: seperator = "-"
+            break
+        default: seperator = "."
+        }
     }
 
     function createNew() {
@@ -63,6 +70,15 @@ Page {
                 console.log("getDays")
             })
         }
+    }
+
+    function set() {
+        var settingsdialog = pageStack.push(Qt.resolvedUrl("SettingsDialog.qml"))
+        settingsdialog.accepted.connect(function() {
+            update_settings()
+            console.log("seperatortype"+seperator_type)
+        }
+        )
     }
 
     function editItem(dayid,name,year,month,day,datetext,favorite) {
@@ -81,6 +97,24 @@ Page {
         })
     }
 
+    Component.onCompleted: {
+        update_settings()
+    }
+
+    onStatusChanged: {
+        if(status === PageStatus.Activating) {
+            if(coverAdd) {
+                ST.getDays("all")
+                coverAdd = false
+            }
+        }
+    }
+
+    onCurrentDayChanged: {
+        //listItem.daysbetween = listItem.refreshdays(year,month,day)
+        ST.getDays("all")
+        console.log("Day changed getDays")
+    }
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaListView {
         id: listview
@@ -91,6 +125,10 @@ Page {
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: set()
             }
             MenuItem {
                 text: qsTr("Create New")
@@ -129,6 +167,7 @@ Page {
             menu: contextMenuComponent
             contentHeight: text1.height + text2.height + text3.height
             property int daysbetween: listItem.refreshdays(year,month,day)
+            property var date_text: listItem.get_date_text(year,month,day,datetext)
 
             onClicked: {
                 var tmp = favorite === 0 ? 1 : 0
@@ -145,8 +184,25 @@ Page {
                 duration: 250
             }
 
+
+            function get_date_text(year,month,day,datetext) {
+                var text
+                switch(date_format_type) {
+                case Settings.System_locale_short: text = datetext
+                    return text
+                case Settings.System_locale: text = Compute.get_date(year,month,day)
+                    return text
+                case Settings.YYYYMMDD: text = year + seperator + month + seperator + day
+                    return text
+                case Settings.DDMMYYYY: text = day + seperator + month + seperator + year
+                    return text
+                case Settings.MMDDYYYY: text = month + seperator + day + seperator + year
+                    return text
+                }
+            }
+
             function refreshdays(year,month,day) {
-                var days = CALC.daysBetween(year,month,day)
+                var days = Compute.daysBetween(year,month,day)
                 return days
             }
 
@@ -156,18 +212,6 @@ Page {
                     ST.deleteDays(dayid);
                 } , 3000 )
             }
-
-            /*Timer {
-                id: refreshtimer
-                interval: 90000
-                repeat: true
-                running: true
-                triggeredOnStart: true
-                onTriggered: {
-                    daysbetween = listItem.refreshdays(year,month,day)
-                    //console.log("refresh done")
-                }
-            }*/
 
             Rectangle {
                 z: -1
@@ -182,6 +226,7 @@ Page {
                 text: daysbetween > 1 ? qsTr( "Countdown to" ) : ""
                 color: Theme.secondaryColor
             }
+
             Label {
                 id: text2
                 x: Theme.paddingMedium
@@ -192,13 +237,18 @@ Page {
                 font.pixelSize: Theme.fontSizeLarge
                 color: Theme.highlightColor
             }
+
             Label {
                 id: text3
                 x: Theme.paddingMedium
                 anchors.top: text2.bottom
-                text: year + "." + month + "." + day
+                width: parent.width - 2 * x - tick.width - text4.width - text5.width
+                //text: year + seperator + month + seperator + day
+                text: date_text
+                truncationMode: TruncationMode.Fade
                 color: Theme.secondaryColor
             }
+
             Image {
                 id: tick
                 visible: favorite === 1
@@ -208,6 +258,7 @@ Page {
                 }
                 source: "image://theme/icon-s-favorite"
             }
+
             Label {
                 id: text4
                 anchors.left: text2.right
@@ -216,6 +267,7 @@ Page {
                 font.pixelSize: daysbetween < 0 || daysbetween > 1 ? Theme.fontSizeHuge * 1.5 : Theme.fontSizeHuge
                 color: daysbetween >=0 ? Theme.highlightColor : Theme.secondaryColor
             }
+
             Label {
                 id: text5
                 anchors.left: text4.right
@@ -225,6 +277,7 @@ Page {
                 font.pixelSize: Theme.fontSizeMedium
                 color: daysbetween >=0 ? Theme.secondaryHighlightColor : Theme.secondaryColor
             }
+
             Component {
                 id: contextMenuComponent
                 ContextMenu {
@@ -245,6 +298,11 @@ Page {
         }
         VerticalScrollDecorator {}
     }
+
+    Settings {
+        id: settings
+    }
+
 }
 
 

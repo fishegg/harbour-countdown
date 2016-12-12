@@ -33,7 +33,10 @@
 #endif
 
 #include <sailfishapp.h>
-
+#include <QtQml>
+#include <QGuiApplication>
+#include <QQuickView>
+#include "settings.h"
 
 int main(int argc, char *argv[])
 {
@@ -45,7 +48,14 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc,argv));
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
+    qmlRegisterType<Settings>("harbour.countdown.settings",1,0,"Settings");
 
-    return SailfishApp::main(argc, argv);
+    QObject::connect(view->engine(),SIGNAL(quit()),qApp,SLOT(quit()));
+
+    view->setSource(SailfishApp::pathTo("qml/harbour-countdown.qml"));
+    view->show();
+    return app->exec();
 }
 

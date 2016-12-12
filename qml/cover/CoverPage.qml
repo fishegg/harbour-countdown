@@ -31,7 +31,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages/storage.js" as ST
-import "../pages/calc.js" as CALC
+import "../pages/compute.js" as Compute
 import "../pages"
 
 CoverBackground {
@@ -64,7 +64,7 @@ CoverBackground {
 
     function updateDaysbetween() {
         ST.getDays("favorite")
-        refreshTimer.interval = CALC.nextZeroPoint()
+        refreshTimer.interval = Compute.nextZeroPoint()
         refreshTimer.start()
     }
 
@@ -110,7 +110,7 @@ CoverBackground {
 
             function refreshdays(year,month,day) {
                 console.log(year+"."+month+"."+day)
-                var days = CALC.daysBetween(year,month,day)
+                var days = Compute.daysBetween(year,month,day)
                 return days
             }
             property int daysbetween: refreshdays(year,month,day)

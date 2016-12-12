@@ -14,7 +14,8 @@ TARGET = harbour-countdown
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-countdown.cpp
+SOURCES += src/harbour-countdown.cpp \
+    src/settings.cpp
 
 OTHER_FILES += qml/harbour-countdown.qml \
     qml/cover/CoverPage.qml \
@@ -24,7 +25,6 @@ OTHER_FILES += qml/harbour-countdown.qml \
     translations/*.ts \
     harbour-countdown.desktop \
     qml/pages/storage.js \
-    qml/pages/calc.js \
     translations/harbour-countdown-zh_CN.ts \
     qml/pages/AboutPage.qml \
     rpm/harbour-countdown.changes \
@@ -43,4 +43,11 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-countdown-de.ts \
             translations/harbour-countdown-zh_CN.ts
+
+DISTFILES += \
+    qml/pages/SettingsDialog.qml \
+    qml/pages/compute.js
+
+HEADERS += \
+    src/settings.h
 

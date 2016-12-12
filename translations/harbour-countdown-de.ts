@@ -115,7 +115,7 @@
     </message>
     <message>
         <source>You can also change this setting by tapping on the item on the first page</source>
-        <translationDu kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst></translation>
+        <translation>Du kannst diese Einstellung auch ändern indem du auf den Countdown auf der ersten Seite tippst&gt;</translation>
     </message>
 </context>
 <context>
@@ -171,6 +171,33 @@
     <message>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Speichern</translation>
+    </message>
+    <message>
+        <source>Date seperator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provided by Date Picker Dialog</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
