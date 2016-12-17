@@ -166,7 +166,7 @@
     </message>
     <message>
         <source>No items</source>
-        <translation>暂无纪念日</translation>
+        <translation>暂无项目</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -174,30 +174,34 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>Date seperator</source>
-        <translation type="unfinished"></translation>
+        <translation>日期分隔符</translation>
     </message>
     <message>
-        <source>Date format</source>
-        <translation type="unfinished"></translation>
+        <source>Default format of date picker dialog date text</source>
+        <translation>日期选择对话框默认日期文本格式</translation>
     </message>
     <message>
-        <source>Provided by Date Picker Dialog</source>
-        <translation type="unfinished"></translation>
+        <source>Example date of the option is current date</source>
+        <translation>选项示例日期是当前日期</translation>
+    </message>
+    <message>
+        <source>Date text format</source>
+        <translation>日期文本格式</translation>
     </message>
 </context>
 </TS>

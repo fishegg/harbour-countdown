@@ -199,11 +199,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Date format</source>
+        <source>Default format of date picker dialog date text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Provided by Date Picker Dialog</source>
+        <source>Example date of the option is current date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date text format</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -59,12 +59,13 @@ Dialog {
             ComboBox {
                 id: dateformatcombobox
                 width: parent.width
-                label: qsTr("Date format")
+                label: qsTr("Date text format")
+                description: qsTr("Example date of the option is current date")
                 currentIndex: date_format
 
                 menu: ContextMenu {
                     MenuItem {
-                        text: qsTr("Provided by Date Picker Dialog")
+                        text: qsTr("Default format of date picker dialog date text")
                         onClicked: {
                             date_format = Settings.System_locale_short
                         }
@@ -96,13 +97,13 @@ Dialog {
                 }
             }
 
-            Label {
+            /*Label {
                 anchors {
                     left: parent.left
                     leftMargin: Theme.paddingLarge
                 }
                 text: year + seperatorcombobox.value + month + seperatorcombobox.value + day
-            }
+            }*/
         }
     }
 

@@ -56,7 +56,7 @@ CoverBackground {
     }
 
     Timer {
-        id: refreshTimer
+        id: refreshtimer
         onTriggered: {
             updateDaysbetween()
         }
@@ -64,8 +64,9 @@ CoverBackground {
 
     function updateDaysbetween() {
         ST.getDays("favorite")
-        refreshTimer.interval = Compute.nextZeroPoint()
-        refreshTimer.start()
+        refreshtimer.interval = Compute.nextZeroPoint()
+        refreshtimer.start()
+        console.log("cover refresh timer start interval="+refreshtimer.interval)
     }
 
     Component.onCompleted: {
@@ -73,21 +74,23 @@ CoverBackground {
     }
 
     onStatusChanged: {
-        if( status === Cover.Activating ) {
-            console.log("add="+itemAdded+"delete="+itemDeleted)
+        if(status === Cover.Activating) {
+            console.log("add="+itemAdded+"delete=" + itemDeleted)
             if(itemAdded) {
                 updateDaysbetween()
                 itemAdded = false
-            }else if(itemDeleted) {
+            }
+            else if(itemDeleted) {
                 refreshdelay.start()
                 itemDeleted = false
-            }else {
+            }
+            else {
                 updateDaysbetween()
             }
-            console.log("start and interval="+refreshTimer.interval)
-        }else if( status === Cover.Deactivating ) {
-            refreshTimer.stop()
-            console.log("stop")
+        }
+        else if(status === Cover.Deactivating) {
+            refreshtimer.stop()
+            console.log("cover refresh timer stop")
         }
     }
 
@@ -98,6 +101,7 @@ CoverBackground {
 
     ListView {
         id: listview
+
         anchors {
             fill: cover
             topMargin: Theme.paddingMedium
@@ -106,47 +110,68 @@ CoverBackground {
         model: listModel
         delegate: ListView {
             id:listview2
-            height: label2.height + label3.height + Theme.paddingSmall / 10
+            height: daystexttext.height + nametext.height + Theme.paddingSmall / 10
+
+            property int daysbetween: refreshdays(year,month,day)
+
+            function adjust() {
+                if(nametext.contentWidth > nametext.width) {
+                    var ratio = nametext.contentWidth / nametext.width
+                    console.log("ratio=" + ratio)
+                    if(ratio < 2) {
+                        nametext.font.pixelSize = Theme.fontSizeSmall / ratio
+                        nametext.maximumLineCount = 1
+                    }
+                    else {
+                        nametext.font.pixelSize = Theme.fontSizeSmall / 2
+                        nametext.elide = Text.ElideRight
+                        nametext.wrapMode = Text.WordWrap
+                        nametext.maximumLineCount = 2
+                    }
+                }
+            }
 
             function refreshdays(year,month,day) {
                 console.log(year+"."+month+"."+day)
                 var days = Compute.daysBetween(year,month,day)
                 return days
             }
-            property int daysbetween: refreshdays(year,month,day)
 
+            Component.onCompleted: adjust()
 
             Label {
-                id: label1
+                id: daystext
                 x: Theme.paddingMedium
                 text: daysbetween < 0 ? -daysbetween : (daysbetween===0 ? qsTr("0") : (daysbetween===1 ? qsTr("1") : daysbetween))
                 font.pixelSize: Theme.fontSizeExtraLarge
-                color: daysbetween >= 0 ? Theme.highlightColor : Theme.secondaryColor
+                color: daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor
             }
             Label {
-                id: label2
+                id: daystexttext
                 text: daysbetween < -1 ? qsTr("days ago") : (daysbetween === -1 ? qsTr("day ago") : (daysbetween===0 || daysbetween===1 ? qsTr("day later") : qsTr("days later")))
                 font.pixelSize: Theme.fontSizeTiny
                 anchors {
-                    left: label1.right
-                    bottom: label1.bottom
+                    left: daystext.right
+                    bottom: daystext.bottom
                     bottomMargin: Theme.paddingSmall * 5/4
                 }
-                color: daysbetween >= 0 ? Theme.highlightColor : Theme.secondaryColor
+                color: daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor
             }
             Label {
-                id: label3
+                id: nametext
                 text: name
                 font.pixelSize: Theme.fontSizeSmall
-                horizontalAlignment: Text.AlignRight
-                truncationMode: TruncationMode.Fade
-                width: cover.width - label1.width - 2 * Theme.paddingMedium - Theme.paddingSmall / 2
+                //horizontalAlignment: Text.AlignRight
+                //truncationMode: TruncationMode.Fade
+                height: 36
+                width: cover.width - daystext.width - 2 * Theme.paddingMedium - Theme.paddingSmall / 2
                 anchors {
-                    left: label1.right
+                    left: daystext.right
                     leftMargin: Theme.paddingSmall / 2
-                    bottom: label2.top
+                    bottom: daystexttext.top
                     bottomMargin: -Theme.paddingSmall
                 }
+                color: daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor
             }
         }
     }

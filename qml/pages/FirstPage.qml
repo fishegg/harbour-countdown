@@ -39,28 +39,12 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait | Orientation.LandscapeMask
 
-    property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
-    property int seperator_type
-    property string seperator
-    property int date_format_type
+    //property var currentDay:Qt.formatDateTime(wallClock.time, "dd")
+    property int current_date: Compute.get_day()
 
-    function update_settings() {
-        date_format_type = settings.get_date_format()
-        set_seperator()
-    }
-
-    function set_seperator() {
-        seperator_type = settings.get_seperator_type()
-        switch(seperator_type) {
-        case Settings.Period: seperator = "."
-            break
-        case Settings.Slash: seperator = "/"
-            break
-        case Settings.Hhyphen: seperator = "-"
-            break
-        default: seperator = "."
-        }
-    }
+    /*function update_settings() {
+        //date_text = Compute.get_date_text(year,month,day,datetext)
+    }*/
 
     function createNew() {
         var createdialog = pageStack.push(Qt.resolvedUrl("EditDialog.qml"))
@@ -75,8 +59,8 @@ Page {
     function set() {
         var settingsdialog = pageStack.push(Qt.resolvedUrl("SettingsDialog.qml"))
         settingsdialog.accepted.connect(function() {
-            update_settings()
-            console.log("seperatortype"+seperator_type)
+            //update_settings()
+            ST.getDays("all")
         }
         )
     }
@@ -97,8 +81,10 @@ Page {
         })
     }
 
-    Component.onCompleted: {
-        update_settings()
+    function updateDaysbetween() {
+        ST.getDays("all")
+        refreshtimer.interval = Compute.nextZeroPoint()
+        refreshtimer.start()
     }
 
     onStatusChanged: {
@@ -110,15 +96,61 @@ Page {
         }
     }
 
-    onCurrentDayChanged: {
+    Timer {
+        id: refreshtimer
+        onTriggered: {
+            updateDaysbetween()
+        }
+    }
+
+    Timer {
+        id: longtimer
+        interval: 90000
+        repeat: true
+        running: true
+        triggeredOnStart: true
+        onTriggered: {
+            console.log("long timer triggered")
+            if(Compute.nextZeroPoint() < interval) {
+                stop()
+                shorttimer.start()
+                console.log("shorttimer start")
+            }
+            else if(Compute.is_next_day(current_date)) {
+                ST.getDays("all")
+                current_date = Compute.get_day()
+            }
+        }
+    }
+
+    Timer {
+        id: shorttimer
+        interval: 1000
+        repeat: true
+        onTriggered: {
+            console.log("short timer triggered")
+            if(Compute.is_next_day(current_date)) {
+                ST.getDays("all")
+                stop()
+                longtimer.start()
+                current_date = Compute.get_day()
+                console.log("longtimer start")
+            }
+        }
+    }
+
+    /*onCurrentDayChanged: {
         //listItem.daysbetween = listItem.refreshdays(year,month,day)
         ST.getDays("all")
         console.log("Day changed getDays")
-    }
+        console.log(Compute.get_time())
+    }*/
+
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaListView {
         id: listview
         anchors.fill: parent
+        property int current_index: currentIndex
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
@@ -146,10 +178,14 @@ Page {
         Component.onCompleted: {
             ST.initialize()
             ST.getDays("all")
+            //positionViewAtIndex(current_index, ListView.Beginning)
 //            refreshTimer.start()
 //            console.log(CALC.nextZeroPoint())
         }
 
+        onMovementEnded: {
+            console.log("current index=" + current_index)
+        }
 
         ListModel {
             id: listModel
@@ -165,40 +201,59 @@ Page {
         delegate: ListItem {
             id: listItem
             menu: contextMenuComponent
-            contentHeight: text1.height + text2.height + text3.height
-            property int daysbetween: listItem.refreshdays(year,month,day)
-            property var date_text: listItem.get_date_text(year,month,day,datetext)
+            contentHeight: countdowntotext.height + nametext.height + datetexttext.height
+            property int daysbetween: refreshdays(year,month,day)
+            property var date_text: Compute.get_date_text(year,month,day,datetext)
+
+            function adjust() {
+                if(nametext.contentWidth > nametext.width) {
+                    var ratio = nametext.contentWidth / nametext.width
+                    console.log("ratio=" + ratio)
+                    if(ratio < 2) {
+                        nametext.font.pixelSize = Theme.fontSizeLarge / ratio
+                        nametext.maximumLineCount = 1
+                    }
+                    else {
+                        nametext.font.pixelSize = Theme.fontSizeLarge / 2
+                        nametext.elide = Text.ElideRight
+                        nametext.wrapMode = Text.WordWrap
+                        nametext.maximumLineCount = 2
+                    }
+                }
+                /*if(datetexttext.contentWidth > datetexttext.width) {
+                    var ratio1 = datetexttext.contentWidth / datetexttext.width
+                    console.log("ratio1=" + ratio1)
+                    if(ratio1 < 2) {
+                        datetexttext.font.pixelSize = Theme.fontSizeLarge / ratio1
+                        datetexttext.maximumLineCount = 1
+                    }
+                    else {
+                        datetexttext.font.pixelSize = Theme.fontSizeLarge / 2
+                        datetexttext.elide = Text.ElideRight
+                        datetexttext.wrapMode = Text.WordWrap
+                        datetexttext.maximumLineCount = 2
+                    }
+                }*/
+            }
+
+            Component.onCompleted: {
+                adjust()
+            }
 
             onClicked: {
-                var tmp = favorite === 0 ? 1 : 0
+                var tmp = (favorite === 0) ? 1 : 0
                 var flag = ST.editDays(dayid,name,year,month,day,datetext,tmp)
                 console.log("flag="+flag)
                 if(flag){
-                    //tick.visible = tmp === 1
+                    //staricon.visible = tmp === 1
                     listModel.set(index,{"favorite":tmp})
                 }
+                //adjust()
             }
 
             ListView.onRemove: RemoveAnimation {
                 target: listItem
                 duration: 250
-            }
-
-
-            function get_date_text(year,month,day,datetext) {
-                var text
-                switch(date_format_type) {
-                case Settings.System_locale_short: text = datetext
-                    return text
-                case Settings.System_locale: text = Compute.get_date(year,month,day)
-                    return text
-                case Settings.YYYYMMDD: text = year + seperator + month + seperator + day
-                    return text
-                case Settings.DDMMYYYY: text = day + seperator + month + seperator + year
-                    return text
-                case Settings.MMDDYYYY: text = month + seperator + day + seperator + year
-                    return text
-                }
             }
 
             function refreshdays(year,month,day) {
@@ -221,61 +276,74 @@ Page {
             }
 
             Label {
-                id: text1
-                x:Theme.paddingMedium
-                text: daysbetween > 1 ? qsTr( "Countdown to" ) : ""
-                color: Theme.secondaryColor
-            }
-
-            Label {
-                id: text2
+                id: countdowntotext
                 x: Theme.paddingMedium
-                anchors.top: text1.bottom
-                width: page.width - text4.width - text5.width - 2 * x
-                text: name
-                truncationMode: TruncationMode.Fade
-                font.pixelSize: Theme.fontSizeLarge
+                text: daysbetween > 1 ? qsTr( "Countdown to" ) : ""
                 color: Theme.highlightColor
             }
 
             Label {
-                id: text3
+                id: nametext
                 x: Theme.paddingMedium
-                anchors.top: text2.bottom
-                width: parent.width - 2 * x - tick.width - text4.width - text5.width
+                anchors.top: countdowntotext.bottom
+                width: page.width - daystext1.width - daystext2.width - 3 * x
+                text: name
+                //truncationMode: TruncationMode.Fade
+                elide: Text.ElideNone
+                font.pixelSize: Theme.fontSizeLarge
+                wrapMode: Text.NoWrap
+                //maximumLineCount: truncated ? 2 : 1
+                color: listItem.highlighted ?
+                           Theme.highlightColor :
+                           (daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor)
+            }
+
+            Label {
+                id: datetexttext
+                x: Theme.paddingMedium
+                anchors.top: nametext.bottom
+                width: staricon.visible ?
+                           parent.width - 2 * x - staricon.width - daystext1.width - daystext2.width :
+                           parent.width - 2 * x - daystext1.width - daystext2.width
                 //text: year + seperator + month + seperator + day
                 text: date_text
                 truncationMode: TruncationMode.Fade
+                //elide: Text.ElideRight
+                font.pixelSize: Theme.fontSizeMedium
                 color: Theme.secondaryColor
             }
 
             Image {
-                id: tick
+                id: staricon
                 visible: favorite === 1
                 anchors {
-                    left: text3.right
-                    verticalCenter: text3.verticalCenter
+                    left: datetexttext.right
+                    verticalCenter: datetexttext.verticalCenter
                 }
                 source: "image://theme/icon-s-favorite"
             }
 
             Label {
-                id: text4
-                anchors.left: text2.right
-                anchors.bottom: text3.bottom
+                id: daystext1
+                anchors.left: nametext.right
+                anchors.bottom: datetexttext.bottom
                 text: daysbetween > 1 ? daysbetween : (daysbetween === 0 ? qsTr("today") : (daysbetween ===1 ? qsTr("tmr") : -daysbetween) )
                 font.pixelSize: daysbetween < 0 || daysbetween > 1 ? Theme.fontSizeHuge * 1.5 : Theme.fontSizeHuge
-                color: daysbetween >=0 ? Theme.highlightColor : Theme.secondaryColor
+                color: listItem.highlighted ?
+                           Theme.highlightColor :
+                           (daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor)
             }
 
             Label {
-                id: text5
-                anchors.left: text4.right
-                anchors.bottom: text2.bottom
+                id: daystext2
+                anchors.left: daystext1.right
+                anchors.bottom: nametext.bottom
                 anchors.bottomMargin: -15
                 text: daysbetween > 1 ? qsTr("days") : (daysbetween === 0 || daysbetween === 1 ? "" : (daysbetween === -1 ? qsTr("day ago") : qsTr("days ago")))
                 font.pixelSize: Theme.fontSizeMedium
-                color: daysbetween >=0 ? Theme.secondaryHighlightColor : Theme.secondaryColor
+                color: listItem.highlighted ?
+                           Theme.highlightColor :
+                           (daysbetween >= 0 ? Theme.highlightColor : Theme.primaryColor)
             }
 
             Component {

@@ -62,7 +62,7 @@ Page {
 
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "v1.3"
+                text: "v2.0"
             }
 
             SectionHeader {

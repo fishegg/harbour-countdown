@@ -17,63 +17,13 @@ Dialog {
     property date existed_date: new Date(existedYear, existedMonth - 1,existedDay)
     property string existedDatetext: ""
     property int favorite
-    property int date_format_type
-    property int seperator_type
-    property string date_text
-    property string seperator
 
     function get_settings() {
-        date_format_type = settings.get_date_format()
-        seperator_type = settings.get_seperator_type()
-        set_seperator()
         console.log("get settings")
-    }
-
-    function set_seperator() {
-        switch(seperator_type) {
-        case Settings.Period: seperator = "."
-            break
-        case Settings.Slash: seperator = "/"
-            break
-        case Settings.Hhyphen: seperator = "-"
-            break
-        default: seperator = "."
-        }
-    }
-
-    function get_date_text(year,month,day) {
-        var text
-        switch(date_format_type) {
-        case Settings.System_locale: text = Compute.get_date(year,month,day)
-            console.log("type"+date_format_type+"date_text"+date_text)
-            return text
-        case Settings.YYYYMMDD: text = year + seperator + month + seperator + day
-            console.log("date_text"+date_text)
-            return text
-        case Settings.DDMMYYYY: text = day + seperator + month + seperator + year
-            console.log("date_text"+date_text)
-            return text
-        case Settings.MMDDYYYY: text = month + seperator + day + seperator + year
-            console.log("date_text"+date_text)
-            return text
-        }
     }
 
     Component.onCompleted: {
         get_settings()
-        if(existedDatetext && date_format_type === Settings.System_locale_short) {
-            dateButton.value = existedDatetext
-            console.log("if")
-        }
-        else if(existedDatetext) {
-            date_text = get_date_text(existedYear,existedMonth,existedDay)
-            dateButton.value = date_text
-            console.log("else if")
-        }
-        else {
-            dateButton.value = qsTr("Select")
-            console.log("else")
-        }
     }
 
 
@@ -128,17 +78,18 @@ Dialog {
                         year = dialog.year
                         month = dialog.month
                         day = dialog.day
-                        get_date_text(year,month,day)
-                        console.log("date_text"+date_text)
                         datetext = dialog.dateText
-                        value = date_format_type === Settings.System_locale_short ?
+                        /*value = date_format_type === Settings.System_locale_short ?
                                     dialog.dateText:
-                                    date_text
+                                    date_text*/
+                        value = Compute.get_date_text(year,month,day,datetext)
                     })
                 }
 
                 label: qsTr("Date")
-                //value: existedDatetext ? existedDatetext : qsTr("Select")
+                value: existedDatetext ?
+                           Compute.get_date_text(existedYear,existedMonth,existedDay,existedDatetext) :
+                           qsTr("Select")
 
                 width: parent.width
                 onClicked: openDateDialog()
