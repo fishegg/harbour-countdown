@@ -174,34 +174,34 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">Speichern</translation>
+        <translation>Speichern</translation>
     </message>
     <message>
         <source>Date seperator</source>
-        <translation type="unfinished"></translation>
+        <translation>Datumstrennzeichen</translation>
     </message>
     <message>
         <source>Default format of date picker dialog date text</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahldialog für das Standard-Format</translation>
     </message>
     <message>
         <source>Example date of the option is current date</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Beispiel ist das aktuelle Datum</translation>
     </message>
     <message>
         <source>Date text format</source>
-        <translation type="unfinished"></translation>
+        <translation>Datumsformat</translation>
     </message>
 </context>
 </TS>
