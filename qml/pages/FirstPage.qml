@@ -168,6 +168,13 @@ Page {
             }
         }
 
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Create New")
+                onClicked: createNew()
+            }
+        }
+
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
 
@@ -181,10 +188,6 @@ Page {
             //positionViewAtIndex(current_index, ListView.Beginning)
 //            refreshTimer.start()
 //            console.log(CALC.nextZeroPoint())
-        }
-
-        onMovementEnded: {
-            console.log("current index=" + current_index)
         }
 
         ListModel {

@@ -53,11 +53,11 @@ function get_time() {
 function is_next_day(day) {
     var date = new Date()
     if(date.getDate() !== day) {
-        console.log("next day")
+        //console.log("next day")
         return true
     }
     else {
-        console.log("not next day")
+        //console.log("not next day")
         return false
     }
 }
@@ -83,22 +83,22 @@ function get_date_text(year,month,day,datetext) {
     var text
     switch(type) {
     case Settings.System_locale_short: text = datetext
-        console.log("type"+type+"date_text"+text)
+        //console.log("type"+type+"date_text"+text)
         return text
     case Settings.System_locale: text = get_date(year,month,day)
-        console.log("type"+type+"date_text"+text)
+        //console.log("type"+type+"date_text"+text)
         return text
     case Settings.YYYYMMDD: text = year + seperator + month + seperator + day
-        console.log("date_text"+text)
+        //console.log("date_text"+text)
         return text
     case Settings.DDMMYYYY: text = day + seperator + month + seperator + year
-        console.log("date_text"+text)
+        //console.log("date_text"+text)
         return text
     case Settings.MMDDYYYY: text = month + seperator + day + seperator + year
-        console.log("date_text"+text)
+        //console.log("date_text"+text)
         return text
     default: text = datetext
-        console.log("default date text")
+        //console.log("default date text")
         return text
     }
 }

@@ -73,7 +73,7 @@ Page {
                 x: Theme.paddingLarge
                 width: parent.width - 2 * x
                 wrapMode: Text.WordWrap
-                text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.")
+                text: qsTr("Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.")
             }
 
             Label {
