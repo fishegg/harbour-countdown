@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>翻译</translation>
     </message>
     <message>
         <source>Reference apps</source>
@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.</source>
-        <translation type="unfinished"></translation>
+        <translation>感谢BirdZhang、蝉曦、Saber、十花、丫梁在编程方面的帮助，还有TinyTodo的作者Simo Mattila以及Worldclock的作者Arno Dekker</translation>
     </message>
 </context>
 <context>

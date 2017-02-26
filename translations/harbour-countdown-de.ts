@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber, Shihua und Yaliang.</translation>
     </message>
 </context>
 <context>
