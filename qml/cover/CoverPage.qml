@@ -38,7 +38,7 @@ CoverBackground {
 
     id: cover
 
-    property int top_index
+    property int border_index
 
     ListModel {id: listModel}
 
@@ -124,6 +124,7 @@ CoverBackground {
             property int current_page: 1
             property int max_page: (listModel.count + 3) / 4
             property int visible_item_count: 4
+            property int max_index: listModel.count - 1
 
             anchors {
                 fill: parent
@@ -262,20 +263,26 @@ CoverBackground {
             iconSource: "image://theme/icon-cover-previous"
             onTriggered: {
                 //console.log("previous")
-                if(listview.current_page !== 1) {
+                if(listview.current_page === 1) {
+                    listview.current_page = listview.max_page
+                    //console.log("max index"+max_index)
+                    border_index = listview.max_index
+                    listview.positionViewAtIndex(border_index,ListView.End)
+                }
+                else if(listview.current_page === 2) {
                     listview.current_page = listview.current_page - 1
-                    top_index = listview.current_page * 4 - 4
-                    listview.positionViewAtIndex(top_index,ListView.Beginning)
+                    border_index = 0
+                    listview.positionViewAtIndex(border_index,ListView.Beginning)
                 }
                 else {
-                    listview.current_page = listview.max_page
-                    top_index = listview.current_page * 4 - 4
-                    listview.positionViewAtIndex(top_index,ListView.Beginning)
+                    listview.current_page = listview.current_page - 1
+                    border_index = listview.max_index - (listview.max_page - listview.current_page) * 4
+                    listview.positionViewAtIndex(border_index,ListView.End)
                 }
                 //console.log("topramp=" + topramp.enabled + "bottomramp=" + bottomramp.enabled)
                 console.log("listview height=" + listview.height + "border height=" + listviewitem.height)
                 //console.log("current page=" + listview.current_page)
-                //console.log("positionViewAtIndex=" + top_index)
+                //console.log("positionViewAtIndex=" + border_index)
             }
         }
 
@@ -285,18 +292,19 @@ CoverBackground {
                 //console.log("next")
                 if(listview.current_page < listview.max_page) {
                     listview.current_page = listview.current_page + 1
-                    top_index = listview.current_page * 4 - 4
-                    listview.positionViewAtIndex(top_index,ListView.Beginning)
+                    //border_index = listview.current_page * 4 - 4
+                    border_index = listview.current_page * 4 - 4
+                    listview.positionViewAtIndex(border_index,ListView.Beginning)
                 }
                 else {
                     listview.current_page = 1
-                    top_index = listview.current_page * 4 - 4
-                    listview.positionViewAtIndex(top_index,ListView.Beginning)
+                    border_index = 0
+                    listview.positionViewAtIndex(border_index,ListView.Beginning)
                 }
                 //console.log("topramp=" + topramp.enabled + "bottomramp=" + bottomramp.enabled)
                 console.log("listview height=" + listview.height + "border height=" + listviewitem.height)
                 //console.log("current page=" + listview.current_page)
-                //console.log("positionViewAtIndex=" + top_index)
+                //console.log("positionViewAtIndex=" + border_index)
             }
         }
     }

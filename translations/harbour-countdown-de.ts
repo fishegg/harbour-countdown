@@ -28,10 +28,6 @@
         <translation>Übersetzer</translation>
     </message>
     <message>
-        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
-        <translation>Vielen Dank an Simo Mattila für TinyTodo und Arno Dekker für Worldclock. Vielen Dank für die Hilfe beim Programmieren an BirdZhang, Chanxi, Saber und Yaliang.</translation>
-    </message>
-    <message>
         <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
         <translation>Vielen Dank an Meng Ying Jue Huan für das Icon.</translation>
     </message>
@@ -42,6 +38,10 @@
     <message>
         <source>Reference apps</source>
         <translation>Referenz Apps</translation>
+    </message>
+    <message>
+        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -24,10 +24,6 @@
         <translation>剩余/已过日数在零点时不会更新</translation>
     </message>
     <message>
-        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
-        <translation>感谢BirdZhang、蝉曦、Saber、丫梁在编程方面的帮助，还有TinyTodo的作者Simo Mattila以及Worldclock的作者Arno Dekker</translation>
-    </message>
-    <message>
         <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
         <translation>感谢梦影决幻提供下方的图标</translation>
     </message>
@@ -42,6 +38,10 @@
     <message>
         <source>Reference apps</source>
         <translation>参考程序</translation>
+    </message>
+    <message>
+        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

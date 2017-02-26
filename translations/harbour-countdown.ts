@@ -24,10 +24,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber and Yaliang for helping me in coding.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Important Days</source>
         <translation type="unfinished"></translation>
     </message>
@@ -41,6 +37,10 @@
     </message>
     <message>
         <source>Thanks Meng Ying Jue Huan for making the icon below.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thanks Simo Mattila who made TinyTodo and Arno Dekker who made Worldclock. Thanks BirdZhang, Chanxi, Saber, Shihua and Yaliang for helping me in coding.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
